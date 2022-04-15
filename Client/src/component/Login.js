@@ -4,13 +4,12 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth.reducer';
-import { singup } from '../store/auth.reducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import Signup from './Signup';
 
 export default function Loginregis() {
-  const [emailId, updateEmailId] = useState('');
-  const [password, updatePassword] = useState('');
+
 
   let navigate = useNavigate();
 
@@ -20,29 +19,11 @@ export default function Loginregis() {
     return state.au.auth;
   });
 
-  const [userName, setUserName] = useState('');
-  const [email, setEmail] = useState('');
-  const [pass, setPass] = useState('');
-  const [confirmPass, setConfirmPass] = useState('');
-  const [role, setRole] = useState('');
+ 
 
-  const createAccount = (e) => {
-    e.preventDefault();
-    dispatch(
-      singup({ username: userName, email: email, password: pass, role: role })
-    );
-    navigate('/products');
-  };
-  const loginUser = (e) => {
-    e.preventDefault();
-    dispatch(login({ email: emailId, password: password }));
-    // navigate('/products')
-    if (user.auth === true) {
-      navigate('/products');
-    } else {
-      console.log('Display error message!');
-    }
-  };
+
+ 
+ 
   // console.log(user);
 
   const formik = useFormik({
@@ -130,80 +111,9 @@ export default function Loginregis() {
 
       {/* sign up page */}
 
-      <div className='text-center w-50 m-5-auto '>
-        <div className='myrightctn w-50 '>
-          <h2 className='myrightctn_header'>Create New Account</h2>
-          <form action='/'>
-            <p>
-              <br />
-              <input
-                type='text'
-                className='myinput'
-                value={userName}
-                onChange={(e) => setUserName(e.target.value)}
-                placeholder='UserName'
-                name='first_name'
-                required
-              />
-            </p>
-            <p>
-              <input
-                type='email'
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className='myinput'
-                placeholder='Email'
-                name='email'
-                required
-              />
-            </p>
-            <p>
-              <input
-                type='password'
-                className='myinput'
-                value={pass}
-                onChange={(e) => setPass(e.target.value)}
-                placeholder='Password'
-                name='password'
-                required
-              />
-            </p>
-
-            <p>
-              <input
-                type='password'
-                className='myinput'
-                value={confirmPass}
-                onChange={(e) => setConfirmPass(e.target.value)}
-                placeholder='Confirm Password'
-                name='password'
-                required
-              />
-            </p>
-
-            <p>
-              <input
-                type='Role'
-                className='myinput'
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-                placeholder='Role'
-                name='password'
-                required
-              />
-            </p>
-
-            <p>
-              <button
-                className='butt'
-                onClick={(e) => createAccount(e)}
-                type='submit'>
-                Register
-              </button>
-            </p>
-          </form>
-        </div>
-      </div>
+            <Signup/>
+            
+       {/* sign up page */}
     </div>
   );
 }
