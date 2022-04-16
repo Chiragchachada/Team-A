@@ -36,7 +36,7 @@ function App() {
         <Route exact path='/admin' element={<AdminLogin />} />
         <Route exact path='/checkout' element={<CheckoutPage />} />
         {/* <Route exact path ="/navbar" element={<Navbar/>}/> */}
-        {/* <Route exact path='/categories' element={<Catgories />} /> */}
+        <Route exact path='/categories' element={<Catgories />} />
 
         <Route element={<LoginRestriction />}>
           <Route exact path='/register' element={<RegistrationForm />} />
