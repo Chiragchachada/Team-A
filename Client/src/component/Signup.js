@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './Logincss.css';
 import { singup } from '../store/auth.reducer';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
@@ -74,7 +74,7 @@ function Signup() {
               id='username'
               name='username'
               type='username'
-              className='myinput'
+              className='myinput '
               //   onChange={(e) => setUserName(e.target.value)}
               placeholder='UserName'
               onChange={formik.handleChange}

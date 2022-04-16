@@ -1,6 +1,6 @@
 import './Logincss.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth.reducer';
@@ -112,7 +112,7 @@ export default function Loginregis() {
       {/* sign up page */}
 
             <Signup/>
-            
+
        {/* sign up page */}
     </div>
   );
