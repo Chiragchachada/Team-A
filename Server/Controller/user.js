@@ -63,3 +63,20 @@ exports.adminlogin = async(req,res,next)=>{
   }
 
 }
+
+exports.getall = async (req, res, next) => {
+    console.log('getting.. ',req.body.id);
+
+    const user = await userModel.find()
+    //  .exec(function(err, products) {
+    //     if (err) return res.send(err)
+    //     res.send(products)
+    //     })
+    
+
+    res.json({
+        success: true,
+        data: user
+    })
+
+}

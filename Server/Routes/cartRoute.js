@@ -14,7 +14,7 @@ router.route('/user')
 router.route('/:id')
     .delete(deleteItem)
 
-router.route('/update')
+router.route('/update/:productid')
     .post(updateCart)
 
 module.exports = router

@@ -9,8 +9,9 @@ const port = 5000;
 //Import Routes
 const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require('./Routes/userRoute')
-const productRoute = require('./Routes/productRoute')
 const cartRoute = require('./Routes/cartRoute')
+const categoryRoute = require('./Routes/categoryRoute')
+
 
 
 
@@ -18,7 +19,7 @@ const cartRoute = require('./Routes/cartRoute')
 
 //Connection to DB
 
-const url = "mongodb://localhost:27017/Team-A-Project"
+const url = "mongodb+srv://User1:User1@cluster0.w0qdz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 const connectionToDB = async () => {
     await mongoose.connect(url);
@@ -32,8 +33,8 @@ connectionToDB()
 app.use(cors())
 app.use(express.json())
 app.use('/user', userRoutes)
-app.use('/products', productRoute)
 app.use('/cart', cartRoute)
+app.use('/category', categoryRoute)
 app.use(errorHandler)
 
 

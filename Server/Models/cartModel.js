@@ -1,14 +1,22 @@
 //create a model for cart items
 const mongoose = require("mongoose")
 const cartItemSchema = new mongoose.Schema({
+    productid:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"categorySchema"
+    },
     title:String,
-    category:String,
-    image:String,
     price:Number,
+    description:String,
+   
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"userModel"
+        ref:"userSchema"
 
+    },
+    quantity:{
+        type:Number,
+        default:1
     }
 },
     { collection: "cart" });

@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const {signup, login,adminlogin} = require('../Controller/user');
+const {signup, login,adminlogin, getall} = require('../Controller/user');
 const { authenticate } = require('../Middleware/auth');
 
 
@@ -20,6 +20,11 @@ router.route("/login")
 
 router.route("/adminlogin")
         .post(authenticate,adminlogin)
+
+router.route("/getall")
+        .get(getall)
+        
+
 
 
 
