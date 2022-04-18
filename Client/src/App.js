@@ -11,6 +11,7 @@ import Homescreen from './screens/Homescreen'
 
 import Login from './component/Login';
 import Signup from './component/Signup';
+import Cart from './component/Cart';
 
 function App() {
   const user = useSelector((state) => {
@@ -23,6 +24,7 @@ function App() {
       <Navbar />
       <Routes>
         <Route path='/Shop' element={<Homescreen/>}/>
+        <Route path='/Cart' element={<Cart/>}/>
 
         <Route path='/Home' element={<Catgories/>}/>
         <Route exact path='/Checkout' element={<CheckoutPage />} />

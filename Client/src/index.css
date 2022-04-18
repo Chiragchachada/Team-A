@@ -15,10 +15,10 @@ code {
     monospace;
 }
 .nav-link{
-  color:black !important;
+  color:black ;
 }
 .navbar-brand{
-  color:black 20px !important;
+  color:black 20px ;
 }
 h1{
   font-size: 15px !important;
@@ -26,15 +26,15 @@ h1{
 }
 .flex-container{
   display: flex !important;
-
+  
 }
 
 
 
-.btn{
+/* .btn{
   background-color: black !important;
 color: brown !important;
-}
+} */
 
 select{
   box-shadow: none !important;
