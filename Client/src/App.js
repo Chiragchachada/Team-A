@@ -9,6 +9,7 @@ import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
 import Signup from './component/Signup';
 import Login from './component/Login';
+import Homescreen from './screens/Homescreen'
 
 
 function App() {
@@ -21,6 +22,8 @@ function App() {
     <div className='App'>
       <Navbar />
       <Routes>
+      <Route path='/Shop' element={<Homescreen/>}/>
+
         <Route path='/Home' element={<Catgories/>}/>
         <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/Categories' element={<Catgories />} />
