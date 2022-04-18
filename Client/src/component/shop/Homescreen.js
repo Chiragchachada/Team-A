@@ -1,8 +1,9 @@
 import React,{useEffect} from "react";
-import Product from "../component/Product";
-import products from "../component/data";
+import Product from "./Product";
+// import '../../css/Style.css'
+import products from "../data";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProducts } from '../store/product-reducer'
+import { fetchProducts } from '../../store/product-reducer'
 export default function Homescreen() {
   
   const ShopData= []

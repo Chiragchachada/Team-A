@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './component/Navbar';
+import Navbar from './component/navbar/Navbar';
 import LoginRestriction from './component/LoginRestriction';
 import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
-import CheckoutPage from './component/CheckoutPage';
-import Catgories from './component/Categories';
-import Homescreen from './screens/Homescreen'
+import Homescreen from '../src/component/shop/Homescreen'
+import Cart from './component/cart/Cart';
+import Catgories from './component/home/Categories';
+import CheckoutPage from './component/checkout/CheckoutPage'
+import Signup from './component/signup/Signup';
+import Login from './component/login/Login';
 
-import Login from './component/Login';
-import Signup from './component/Signup';
-import Cart from './component/Cart';
 
 function App() {
   const user = useSelector((state) => {
@@ -28,7 +28,6 @@ function App() {
 
         <Route path='/Home' element={<Catgories/>}/>
         <Route exact path='/Checkout' element={<CheckoutPage />} />
-        <Route exact path='/Categories' element={<Catgories />} />
         <Route exact path='/Signup' element={<Signup />} />
         <Route exact path='/Login' element={<Login/>} />
 

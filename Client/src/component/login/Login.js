@@ -3,9 +3,9 @@ import 'bootstrap/dist/css/bootstrap.css';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../store/auth.reducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { login } from '../../store/auth.reducer';
 
 
 export default function Login() {

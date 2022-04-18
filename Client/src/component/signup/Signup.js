@@ -1,10 +1,10 @@
 import React from 'react';
 import './Logincss.css';
-import { singup } from '../store/auth.reducer';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
+import { singup } from '../../store/auth.reducer';
 
 function Signup() {
   //   const [email, setEmail] = useState('');
