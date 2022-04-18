@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth.reducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import Signup from './Signup';
+
 
 export default function Loginregis() {
 
@@ -98,8 +98,8 @@ export default function Loginregis() {
                 </div>
               ) : null}
             </p>
-            {/* <div className="text-red-500 font-bold">{user.err}</div>
-            <div className="text-red-500 font-bold">{user.usererr}</div> */}
+            <div className="text-red-500 font-bold">{user.err}</div>
+            <div className="text-red-500 font-bold">{user.usererr}</div>
             <p>
               <button className='butt' type='submit'>
                 Login
@@ -109,11 +109,7 @@ export default function Loginregis() {
         </div>
       </div>
 
-      {/* sign up page */}
 
-            <Signup/>
-
-       {/* sign up page */}
     </div>
   );
 }

@@ -49,7 +49,7 @@ function Signup() {
       role: Yup.string().required('Required'),
     }),
 
-    onSubmit: async (values) => {
+    onSubmit:  (values) => {
       dispatch(
         singup({
           username: values.username,
@@ -66,7 +66,7 @@ function Signup() {
     <div className='text-center w-50 m-5-auto '>
       <div className='myrightctn w-50 '>
         <h2 className='myrightctn_header'>Create New Account</h2>
-        <form action='/'>
+        <form onSubmit={formik.handleSubmit}>
           <p>
             <br />
             <input
@@ -154,7 +154,7 @@ function Signup() {
               htmlFor='role '
               id='role'
               name='role'
-              type='role'
+              type='submit /'
               className='myinput'
               //   value={role}
               //   onChange={(e) => setRole(e.target.value)}
@@ -171,7 +171,7 @@ function Signup() {
           </p>
 
           <p>
-            <button className='butt' type='submit'>
+            <button className='butt' type='submit' >
               Register
             </button>
           </p>

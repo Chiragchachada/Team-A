@@ -7,6 +7,8 @@ import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
 import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
+import Login from './component/Login'
+import Signup from './component/Signup'
 
 function App() {
   const user = useSelector((state) => {
@@ -17,10 +19,14 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
+     
       <Routes>
+      <Route exact path='/' element={ <Catgories />} />
         <Route exact path='/checkout' element={<CheckoutPage />} />
-        {/* <Route exact path ="/navbar" element={<Navbar/>}/> */}
-        <Route exact path='/categories' element={<Catgories />} />
+     
+        <Route exact path='login' element={<Login />} />
+        <Route exact path='signup' element={<Signup />} />
+
 
         <Route element={<LoginRestriction />}></Route>
 

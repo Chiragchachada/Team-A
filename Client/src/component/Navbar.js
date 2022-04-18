@@ -25,7 +25,7 @@ function Navbar() {
                 id='navbarCollapse'
               >
                 <div className='navbar-nav mr-auto py-0'>
-                  <Link to='#' className='nav-item nav-link active'>
+                  <Link to='/' className='nav-item nav-link active'>
                     Home
                   </Link>
                   <Link to='#' className='nav-item nav-link'>
@@ -57,13 +57,13 @@ function Navbar() {
                 </div>
                 <div className='navbar-nav ml-auto py-0'>
                   <Link
-                    to='#'
+                    to='login'
                     className='nav-item nav-link'
                     style={{ marginLeft: '160%' }}
                   >
                     Login
                   </Link>
-                  <Link to='#' className='nav-item nav-link'>
+                  <Link to='signup' className='nav-item nav-link'>
                     Register
                   </Link>
                 </div>
