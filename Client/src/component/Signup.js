@@ -58,13 +58,7 @@ function Signup() {
           role: values.role,
         })
       );
-<<<<<<< HEAD
-      // if(user.auth){navigate('/products');}
-      
-      
-=======
       navigate('home');
->>>>>>> 8d547db8bc586830ea7d882f462bd50e429dd1a8
     },
   });
 

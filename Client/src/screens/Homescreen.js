@@ -6,20 +6,22 @@ import { fetchProducts } from '../store/product-reducer'
 export default function Homescreen() {
   
   const ShopData= []
+
   
   // ShopData.push(shop.)
   const shop = useSelector((state) => {
     return state.pr.products
   })
-  
-  // for(i = 0; i < shop.length ; i++){
-  //   const st = shop[i].products
-  //   for(i=0; i<st.length; i++){
-  //     // console.log("st", st[i])
-  //     ShopData.push(st[i])
-  //   }
-  //   }
-  
+
+for(let i = 0; i< shop.length ; i++){
+  let dt = shop[i].products
+   for(let j = 0; j < dt.length; j++){
+     ShopData.push(dt[j])
+   }
+ 
+ }
+  console.log("shopdata", ShopData);
+ 
   
   const user = useSelector((state) => {
       return state.au.auth
@@ -43,14 +45,12 @@ export default function Homescreen() {
   return (
     <div>
       <div className="row">
-        {ShopData.map((item) => {
+        {ShopData.map((products) => {
           return (
             <div className="col-md-4">
               <div>
-                {/* <Product product={item[0]} /> */}
-                {ShopData.map((item)=>{console.log(item);
-                  return(<>{item.products}</>)
-                })}
+                <Product product={products} />
+                {/* {products.title} */}
               </div>
             </div>
           );

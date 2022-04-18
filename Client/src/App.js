@@ -7,13 +7,10 @@ import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
 import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
-import Signup from './component/Signup';
-import Login from './component/Login';
 import Homescreen from './screens/Homescreen'
 
 import Login from './component/Login';
 import Signup from './component/Signup';
-import Homescreen from './screens/Homescreen';
 
 function App() {
   const user = useSelector((state) => {
@@ -25,7 +22,7 @@ function App() {
     <div className='App'>
       <Navbar />
       <Routes>
-      <Route path='/Shop' element={<Homescreen/>}/>
+        <Route path='/Shop' element={<Homescreen/>}/>
 
         <Route path='/Home' element={<Catgories/>}/>
         <Route exact path='/Checkout' element={<CheckoutPage />} />

@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
 
-export default function Loginregis() {
+export default function Login() {
 
 
   let navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function Loginregis() {
   });
 
   if (user.auth === true) {
-    navigate('/Products');
+    navigate('/Home');
   } else {
     console.log('Display error message!');
   }

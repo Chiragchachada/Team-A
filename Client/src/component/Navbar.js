@@ -31,10 +31,10 @@ function Navbar() {
                 id='navbarCollapse'
               >
                 <div className='navbar-nav mr-auto py-0'>
-                  <Link to='/' className='nav-item nav-link active'>
+                  <Link to='/home' className='nav-item nav-link active'>
                     Home
                   </Link>
-                  <Link to='shop' className='nav-item nav-link'>
+                  <Link to='/shop' className='nav-item nav-link'>
                     Shop
                   </Link>
                   <Link to='/About' className='nav-item nav-link'>
