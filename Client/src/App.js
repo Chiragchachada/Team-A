@@ -10,6 +10,7 @@ import Catgories from './component/Categories';
 import Login from './component/Login'
 import Signup from './component/Signup'
 
+import Homescreen from './screens/Homescreen'
 function App() {
   const user = useSelector((state) => {
     console.log(state);
@@ -20,6 +21,7 @@ function App() {
     <div className='App'>
       <Navbar />
      
+      <Homescreen/>
       <Routes>
       <Route exact path='/' element={ <Catgories />} />
         <Route exact path='/checkout' element={<CheckoutPage />} />
