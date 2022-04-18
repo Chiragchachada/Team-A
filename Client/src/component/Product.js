@@ -64,7 +64,7 @@ export default function Product({ product }) {
   </Modal.Header>
 
   <Modal.Body>
-  <img src={product.image} className="img-fluid " style={{height:"450px"}}></img>
+  <img src={product.image} className="img-fluid " style={{height:"450px", width:"450px"}}></img>
     
   </Modal.Body>
   

@@ -7,6 +7,7 @@ import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
 import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
+import Contact from './component/Contact';
 import Homescreen from './screens/Homescreen'
 
 import Login from './component/Login';
@@ -22,10 +23,11 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
+      
       <Routes>
         <Route path='/Shop' element={<Homescreen/>}/>
         <Route path='/Cart' element={<Cart/>}/>
-
+<Route path='/Contact' element={<Contact/>}/>
         <Route path='/Home' element={<Catgories/>}/>
         <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/Categories' element={<Catgories />} />
