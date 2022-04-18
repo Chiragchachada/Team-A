@@ -58,7 +58,9 @@ function Signup() {
           role: values.role,
         })
       );
-      navigate('/products');
+      // if(user.auth){navigate('/products');}
+      
+      
     },
   });
 
@@ -73,7 +75,6 @@ function Signup() {
               htmlFor='username '
               id='username'
               name='username'
-              type='username'
               className='myinput '
               //   onChange={(e) => setUserName(e.target.value)}
               placeholder='UserName'

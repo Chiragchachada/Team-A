@@ -6,7 +6,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../store/auth.reducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
-import Signup from './Signup';
 
 export default function Loginregis() {
 
@@ -18,6 +17,12 @@ export default function Loginregis() {
     console.log(state);
     return state.au.auth;
   });
+
+  if (user.auth === true) {
+    navigate('/Products');
+  } else {
+    console.log('Display error message!');
+  }
 
  
 
@@ -37,14 +42,10 @@ export default function Loginregis() {
         .required('Required'),
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
+   
     onSubmit: async (values) => {
       dispatch(login({ email: values.email, password: values.Password }));
-      navigate('/products')
-      if (user.auth === true) {
-        navigate('/products');
-      } else {
-        console.log('Display error message!');
-      }
+      
     },
   });
 
@@ -84,7 +85,6 @@ export default function Loginregis() {
                 className='myinput'
                 id='Password'
                 name='Password'
-                type='Password'
                 // value={password}
                 // onChange={(e)=>updatePassword(e.target.value)}
                 placeholder='Password'
@@ -98,8 +98,8 @@ export default function Loginregis() {
                 </div>
               ) : null}
             </p>
-            {/* <div className="text-red-500 font-bold">{user.err}</div>
-            <div className="text-red-500 font-bold">{user.usererr}</div> */}
+            <div className="text-red-500 font-bold">{user.err}</div>
+            <div className="text-red-500 font-bold">{user.usererr}</div>
             <p>
               <button className='butt' type='submit'>
                 Login
@@ -109,11 +109,7 @@ export default function Loginregis() {
         </div>
       </div>
 
-      {/* sign up page */}
-
-            <Signup/>
-
-       {/* sign up page */}
+     
     </div>
   );
 }

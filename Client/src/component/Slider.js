@@ -20,7 +20,7 @@ function Slider() {
                 <h3 className='display-4 text-white font-weight-semi-bold mb-4'>
                   Fashionable Dress
                 </h3>
-                <Link to='#' className='btn btn-light py-2 px-3'>
+                <Link to='/Shop' className='btn btn-light py-2 px-3'>
                   Shop Now
                 </Link>
               </div>

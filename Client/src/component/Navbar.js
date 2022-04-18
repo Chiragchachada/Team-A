@@ -1,9 +1,14 @@
 import React from 'react';
-// import './style.css';
 import TopNavbar from './TopNavbar';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 function Navbar() {
+
+  const user = useSelector((state) => {
+    console.log(state);
+    return state.au.auth;
+  });
   return (
     <>
       <TopNavbar />
@@ -25,16 +30,16 @@ function Navbar() {
                 id='navbarCollapse'
               >
                 <div className='navbar-nav mr-auto py-0'>
-                  <Link to='#' className='nav-item nav-link active'>
-                    Home
-                  </Link>
-                  <Link to='#' className='nav-item nav-link'>
+                   <a><Link to='/Home' className='nav-item nav-link active'> Home
+                  </Link></a>
+                   
+                  <Link to='/Shop' className='nav-item nav-link'>
                     Shop
                   </Link>
-                  <Link to='#' className='nav-item nav-link'>
-                    Shop Detail
+                  <Link to='/About' className='nav-item nav-link'>
+                    About
                   </Link>
-                  <div className='nav-item dropdown'>
+                  {/* <div className='nav-item dropdown'>
                     <Link
                       to='#'
                       className='nav-link dropdown-toggle'
@@ -50,22 +55,22 @@ function Navbar() {
                         Checkout
                       </Link>
                     </div>
-                  </div>
-                  <Link to='#' className='nav-item nav-link'>
+                  </div> */}
+                  <Link to='/Contact' className='nav-item nav-link'>
                     Contact
                   </Link>
                 </div>
                 <div className='navbar-nav ml-auto py-0'>
-                  <Link
-                    to='#'
+                 {!user.auth && <Link
+                    to='/Login'
                     className='nav-item nav-link'
                     style={{ marginLeft: '160%' }}
                   >
                     Login
-                  </Link>
-                  <Link to='#' className='nav-item nav-link'>
+                  </Link>}
+                  {!user.auth && <Link to='/Signup' className='nav-item nav-link'>
                     Register
-                  </Link>
+                  </Link>}
                 </div>
               </div>
             </nav>

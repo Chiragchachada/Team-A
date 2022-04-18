@@ -27,7 +27,7 @@ export default productReducer.reducer
 
 
 
-const baseUrl = 'http://localhost:5000/products/'
+const baseUrl = 'http://localhost:5000/category/'
 
 export const addProduct = (product) => {
     return async(dispatch) => {

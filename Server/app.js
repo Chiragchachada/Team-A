@@ -11,6 +11,7 @@ const errorHandler = require("./middleware/errorHandler");
 const userRoutes = require('./Routes/userRoute')
 const cartRoute = require('./Routes/cartRoute')
 const categoryRoute = require('./Routes/categoryRoute')
+const checkoutRoute = require('./Routes/checkoutRoute')
 
 
 
@@ -35,6 +36,9 @@ app.use(express.json())
 app.use('/user', userRoutes)
 app.use('/cart', cartRoute)
 app.use('/category', categoryRoute)
+app.use('/checkout', checkoutRoute)
+
+checkoutRoute
 app.use(errorHandler)
 
 
