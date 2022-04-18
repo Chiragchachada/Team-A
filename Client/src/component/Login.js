@@ -45,7 +45,9 @@ export default function Loginregis() {
     }),
    
     onSubmit: async (values) => {
-      dispatch(login({ email: values.email, password: values.Password }));
+      dispatch(login({ email: values.email, password: values.Password }))}
+    });
+      
       
      
 
