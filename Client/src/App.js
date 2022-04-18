@@ -5,17 +5,13 @@ import Navbar from './component/navbar/Navbar';
 import LoginRestriction from './component/LoginRestriction';
 import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
-import Homescreen from '../src/component/shop/Homescreen'
+import Homescreen from '../src/component/shop/Homescreen';
 import Cart from './component/cart/Cart';
 import Catgories from './component/home/Categories';
-import CheckoutPage from './component/checkout/CheckoutPage'
+import CheckoutPage from './component/checkout/CheckoutPage';
 import Signup from './component/signup/Signup';
 import Login from './component/login/Login';
-
-import Login from './component/Login';
-import Signup from './component/Signup';
-import Cart from './component/Cart';
-import Footer from './component/Footer';
+import Footer from '../src/component/footer/Footer';
 
 function App() {
   const user = useSelector((state) => {
@@ -34,8 +30,6 @@ function App() {
         <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/Signup' element={<Signup />} />
         <Route exact path='/Login' element={<Login />} />
-
-
 
         {/* <Routes> */}
         {/* <Route exact path='/' element={<Catgories />} />
