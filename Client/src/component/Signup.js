@@ -58,7 +58,7 @@ function Signup() {
           role: values.role,
         })
       );
-      navigate('/products');
+      navigate('home');
     },
   });
 

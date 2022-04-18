@@ -1,5 +1,5 @@
 import React from 'react';
-// import './style.css';
+import './Style.css';
 import TopNavbar from './TopNavbar';
 import { Link } from 'react-router-dom';
 
@@ -28,7 +28,7 @@ function Navbar() {
                   <Link to='/' className='nav-item nav-link active'>
                     Home
                   </Link>
-                  <Link to='#' className='nav-item nav-link'>
+                  <Link to='shop' className='nav-item nav-link'>
                     Shop
                   </Link>
                   <Link to='#' className='nav-item nav-link'>

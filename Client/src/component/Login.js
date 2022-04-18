@@ -41,7 +41,7 @@ export default function Loginregis() {
       dispatch(login({ email: values.email, password: values.Password }));
       navigate('/products')
       if (user.auth === true) {
-        navigate('/products');
+        navigate('home');
       } else {
         console.log('Display error message!');
       }
