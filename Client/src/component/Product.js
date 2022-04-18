@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import products from "../component/data";
 import {Modal} from "react-bootstrap";
 
-export default function Product({ product }) {
+export default function Product({ item }) {
   const [quantity, setquantity] = useState(1);
   const [varient, setvarient] = useState("small");
 
@@ -17,9 +17,9 @@ export default function Product({ product }) {
       className="shadow-lg p-3 mb-5 bg-white rounded"
     >
      <div onClick={handleShow} style={{cursor:'pointer'}}>
-     <h1>{product.title}</h1>
+     <h1>{item.title}</h1>
       <img
-        src={product.image}
+        src={item.image}
         className="img-fluid"
         style={{ height: "200px", width: "200px" }}
       ></img>
@@ -34,7 +34,7 @@ export default function Product({ product }) {
               setvarient(e.target.value);
             }}
           >
-            {product.varients.map((varient) => {
+            {item.varients.map((varient) => {
               return <option value={varient}>{varient}</option>;
             })}
           </select>
@@ -57,7 +57,7 @@ export default function Product({ product }) {
 
       <div className="flex-container">
         <div className="m-1 w-100">
-          <h1 className="mt-2" style={{cursor:'pointer'}}>Price :{product.prices[0][varient] * quantity}₹</h1>
+          <h1 className="mt-2" style={{cursor:'pointer'}}>Price :{item.prices[0][varient] * quantity}₹</h1>
           
         </div>
 
@@ -68,11 +68,11 @@ export default function Product({ product }) {
 
       <Modal show={show}>
   <Modal.Header closeButton onClick={handleClose}>
-    <Modal.Title>{product.title}</Modal.Title>
+    <Modal.Title>{item.title}</Modal.Title>
   </Modal.Header>
 
   <Modal.Body>
-  <img src={product.image} className="img-fluid " style={{height:"450px"}}></img>
+  <img src={item.image} className="img-fluid " style={{height:"450px"}}></img>
     
   </Modal.Body>
   
