@@ -12,6 +12,8 @@ import { BrowserRouter } from "react-router-dom";
 import cartReducer from './store/cart-reducer';
 import authReducer from './store/auth.reducer';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../src/css/Style.min.css'
+
 
 
 

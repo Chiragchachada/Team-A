@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {Modal} from "react-bootstrap";
-import './Style.css'
+// import '../../css/Style.css'
+
 
 export default function Product({ product }) {
   const [quantity, setquantity] = useState();
@@ -13,11 +14,11 @@ export default function Product({ product }) {
 
   return (
     <div
-      style={{ margin: "50px" }}
-      className="shadow-lg p-3 mb-5 bg-white rounded cat-item "
+      style={{ margin: "50px", borderRadius:'40px' }}
+      className="shadow-lg p-3 mb-5 bg-white  cat-item "
     >
-     <div onClick={handleShow}  style={{cursor:'pointer'}}>
-     <h1>{product.title}</h1>
+     <div onClick={handleShow}  style={{cursor:'pointer'}} className='cat-item'>
+     <h1 id="small">{product.title}</h1>
       <img
         src={product.image}
         className="img-fluid cat-img mx-auto "
@@ -28,10 +29,10 @@ export default function Product({ product }) {
         <div className="w-100 m-1">
           {/* <p>SIZE</p> */}
          <div className="w-100 d-flex m-1">
-          <p className="mt-3 me-2">Quantity</p>
+          <p className="mt-3  text-muted">Quantity</p>
           <select 
-            className="form-control mx-auto p-0 text-center mt-2" 
-            value={quantity} style={{cursor:'pointer',width:"50px"}}
+            className="form-control mx-auto p-0 text-center mt-2 shadow rounded  text-muted" 
+            value={quantity} style={{cursor:'pointer',width:"40px"}}
             onChange={(e) => {
               setquantity(e.target.value);
             }}
@@ -43,7 +44,7 @@ export default function Product({ product }) {
         </div>
         </div>
         <div className=" mt-3 w-100">
-          <h1 className="mt-2" style={{cursor:'pointer'}}>Price :{product.price}₹</h1>
+          <h1 id="small" className="mt-2 text-muted" style={{cursor:'pointer'}}>Price: {product.price}₹</h1>
           
         </div>
         
@@ -54,25 +55,22 @@ export default function Product({ product }) {
        
 
         <div className="m-1 w-100">
-          <button className="btn btn-primary"> ADD TO CART</button>
+          <button className="btn btn-primary rounded shadow"> ADD TO CART</button>
         </div>
       </div>
 
-      <Modal show={show}>
+      <Modal show={show} >
   <Modal.Header closeButton onClick={handleClose}>
-    <Modal.Title>{product.title}</Modal.Title>
+   
   </Modal.Header>
 
-  <Modal.Body>
-  <img src={product.image} className="img-fluid " style={{height:"450px", width:"450px"}}></img>
+  <Modal.Body >
+  <img src={product.image} className="img-fluid mx-auto" style={{height:"530px"}}></img>
     
   </Modal.Body>
   
 
-  <Modal.Footer>
-  <button className="btn" onClick={handleClose}>close</button>
-   
-  </Modal.Footer>
+  
 </Modal>
     </div>
   );

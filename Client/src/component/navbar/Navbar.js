@@ -1,5 +1,6 @@
 import React from 'react';
-import './Style.css';
+// import '../../css/Style.css'
+
 import TopNavbar from './TopNavbar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -30,11 +31,11 @@ function Navbar() {
                 className='collapse navbar-collapse justify-content-between'
                 id='navbarCollapse'
               >
-                <div className='navbar-nav mr-auto py-0'>
-                  <Link to='/home' className='nav-item nav-link active'>
+                <div className='navbar-nav  mr-auto py-0'>
+                  <Link to='/Home' className='nav-item nav-link '>
                     Home
                   </Link>
-                  <Link to='/shop' className='nav-item nav-link'>
+                  <Link to='/Shop' className='nav-item nav-link '>
                     Shop
                   </Link>
                   <Link to='/About' className='nav-item nav-link'>
