@@ -7,7 +7,7 @@ import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
 import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
-
+import Homescreen from './screens/Homescreen'
 function App() {
   const user = useSelector((state) => {
     console.log(state);
@@ -17,6 +17,7 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
+      <Homescreen/>
       <Routes>
         <Route exact path='/checkout' element={<CheckoutPage />} />
         {/* <Route exact path ="/navbar" element={<Navbar/>}/> */}
