@@ -7,6 +7,7 @@ import { login } from '../store/auth.reducer';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 
+
 export default function Loginregis() {
 
 
@@ -46,8 +47,7 @@ export default function Loginregis() {
     onSubmit: async (values) => {
       dispatch(login({ email: values.email, password: values.Password }));
       
-    },
-  });
+     
 
   return (
     <div className='d-flex main nodiv   justify-content-evenly mb-28'>
@@ -108,8 +108,6 @@ export default function Loginregis() {
           </form>
         </div>
       </div>
-
-     
-    </div>
+</div>
   );
-}
+              }

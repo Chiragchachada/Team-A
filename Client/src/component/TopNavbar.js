@@ -34,7 +34,7 @@ function TopNavbar() {
         <div class='col-lg-3 col-6 text-right'>
           <Link to='#' class='btn border'>
             <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-            <span class='badge'>0</span>
+            <span class='badge text-light'>0</span>
           </Link>
         </div>
       </div>

@@ -11,6 +11,9 @@ import Signup from './component/Signup';
 import Login from './component/Login';
 import Homescreen from './screens/Homescreen'
 
+import Login from './component/Login';
+import Signup from './component/Signup';
+import Homescreen from './screens/Homescreen';
 
 function App() {
   const user = useSelector((state) => {
@@ -31,9 +34,18 @@ function App() {
         <Route exact path='/Login' element={<Login/>} />
 
 
+     
+      {/* <Routes> */}
+        {/* <Route exact path='/' element={<Catgories />} />
+        <Route exact path='/shop' element={ <Homescreen />} />
+        <Route exact path='/checkout' element={<CheckoutPage />} />
+
+        <Route exact path='login' element={<Login />} />
+        <Route exact path='signup' element={<Signup />} />
+
         <Route element={<LoginRestriction />}></Route>
 
-        <Route element={<PrivateRoute />}></Route>
+        <Route element={<PrivateRoute />}></Route> */}
       </Routes>
     </div>
   );

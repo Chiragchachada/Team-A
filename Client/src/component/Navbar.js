@@ -1,4 +1,5 @@
 import React from 'react';
+import './Style.css';
 import TopNavbar from './TopNavbar';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -30,10 +31,10 @@ function Navbar() {
                 id='navbarCollapse'
               >
                 <div className='navbar-nav mr-auto py-0'>
-                   <a><Link to='/Home' className='nav-item nav-link active'> Home
-                  </Link></a>
-                   
-                  <Link to='/Shop' className='nav-item nav-link'>
+                  <Link to='/' className='nav-item nav-link active'>
+                    Home
+                  </Link>
+                  <Link to='shop' className='nav-item nav-link'>
                     Shop
                   </Link>
                   <Link to='/About' className='nav-item nav-link'>
@@ -61,16 +62,16 @@ function Navbar() {
                   </Link>
                 </div>
                 <div className='navbar-nav ml-auto py-0'>
-                 {!user.auth && <Link
-                    to='/Login'
+                  <Link
+                    to='login'
                     className='nav-item nav-link'
                     style={{ marginLeft: '160%' }}
                   >
                     Login
-                  </Link>}
-                  {!user.auth && <Link to='/Signup' className='nav-item nav-link'>
+                  </Link>
+                  <Link to='signup' className='nav-item nav-link'>
                     Register
-                  </Link>}
+                  </Link>
                 </div>
               </div>
             </nav>

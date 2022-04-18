@@ -43,24 +43,26 @@ function Slider() {
             </div>
           </div>
         </div>
-        <Link
+        <div
           className='carousel-control-prev'
-          to='#header-carousel'
+         href='header-carousel'
           data-slide='prev'
+          role='button'
         >
           <div className='btn btn-dark slider-icon'>
             <span className='carousel-control-prev-icon mb-n2'></span>
           </div>
-        </Link>
-        <Link
+        </div>
+        <div
           className='carousel-control-next'
-          to='#header-carousel'
+          href='header-carousel'
           data-slide='next'
+          role='button'
         >
           <div className='btn btn-dark slider-icon2'>
             <span className='carousel-control-next-icon mb-n2'></span>
           </div>
-        </Link>
+        </div>
       </div>
     </>
   );
