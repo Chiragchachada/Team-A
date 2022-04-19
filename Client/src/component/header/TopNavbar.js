@@ -12,7 +12,7 @@ function TopNavbar() {
               <span class='text-primary font-weight-bold border px-3 mr-1'>
                 E
               </span>
-              Shopper
+              CART
             </h1>
           </Link>
         </div>
