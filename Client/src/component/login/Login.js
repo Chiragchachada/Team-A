@@ -7,10 +7,7 @@ import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { login } from '../../store/auth.reducer';
 
-
 export default function Login() {
-
-
   let navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -18,18 +15,14 @@ export default function Login() {
     console.log(state);
     return state.au.auth;
   });
-
-  if (user.auth === true) {
+   console.log("user", user);
+   
+  if (user.auth ) {
     navigate('/Home');
   } else {
     console.log('Display error message!');
   }
 
- 
-
-
- 
- 
   // console.log(user);
 
   const formik = useFormik({
@@ -43,16 +36,14 @@ export default function Login() {
         .required('Required'),
       email: Yup.string().email('Invalid email address').required('Required'),
     }),
-   
+
     onSubmit: async (values) => {
-      dispatch(login({ email: values.email, password: values.Password }))}
-    });
-      
-      
-     
+      dispatch(login({ email: values.email, password: values.Password }));
+    },
+  });
 
   return (
-    <div className='d-flex main nodiv   justify-content-evenly mb-28'>
+    <div className='d-flex main nodiv justify-content-evenly mb-28'>
       <div className='text-center   m-5-auto'>
         <div className='myleftctn ml-80'>
           <h2 className='myleftctn_header'>Log In</h2>
@@ -100,8 +91,8 @@ export default function Login() {
                 </div>
               ) : null}
             </p>
-            <div className="text-red-500 font-bold">{user.err}</div>
-            <div className="text-red-500 font-bold">{user.usererr}</div>
+            <div className='text-red-500 font-bold'>{user.err}</div>
+            <div className='text-red-500 font-bold'>{user.usererr}</div>
             <p>
               <button className='butt' type='submit'>
                 Login
@@ -110,6 +101,6 @@ export default function Login() {
           </form>
         </div>
       </div>
-</div>
+    </div>
   );
-              }
+}

@@ -1,5 +1,6 @@
 import {createSlice} from '@reduxjs/toolkit'
-
+import Jwt_decode from 'jwt-decode'
+import { useState } from 'react';
 
 const authReducer = createSlice({
     name: "auth",
@@ -27,7 +28,7 @@ const authReducer = createSlice({
 
   export const login = (user) => {
     return async(dispatch) => {
-       
+
         let response = await fetch(baseUrl + 'login', {
           method: 'POST',
           headers: {
@@ -40,14 +41,14 @@ const authReducer = createSlice({
 
         if(data.token){
           localStorage.setItem('token', data.token)
-        }
-        // set token to local storage
+          var tokenInfo =  Jwt_decode(data.token)
 
-        dispatch(LOGIN(data));
+         }
+         var newData = Object.assign(data, tokenInfo)
+        dispatch(LOGIN(newData));
 
     }
 }
-
 
 
 export const singup = (user) => {
@@ -63,9 +64,11 @@ export const singup = (user) => {
         let data = await response.json();
         if(data.token){
           localStorage.setItem('token', data.token)
+          var tokenInfo =  Jwt_decode(data.token)
+
         }
-        // console.log(data);
-        dispatch(SIGN_UP(data));
+        var newData = Object.assign(data, tokenInfo)
+        dispatch(SIGN_UP(newData));
   
     }
   }

@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteFromCart, fetchCart } from '../../store/cart-reducer';
+
 // import '../../css/Style.css'
 
 function Cart() {
+  const [ fetch, setFetch] =useState(false)
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => {
+    console.log(state)
+      return state.cr.cart
+    })
+    const auth = (state) => {
+      return state.au.auth}
+      const user = useSelector(auth)
+      const id = user.id
+      useEffect(() => {
+        dispatch(fetchCart({id:id}));
+      }, [fetch]);
+    function deleteitem(id){
+      dispatch(deleteFromCart(id))
+      setFetch(!fetch)
+      
+    }
+    
   return (
     <>
       <div className='container-fluid pt-5'>
@@ -18,16 +40,18 @@ function Cart() {
                 </tr>
               </thead>
               <tbody className='align-middle'>
-                <tr>
+               {cart.map((product)=>{
+                 return(
+                  <tr>
                   <td className='align-middle'>
                     <img
-                      src='img/product-1.jpg'
+                      src={product.image}
                       alt=''
                       style={{ width: '50px' }}
-                    />{' '}
-                    Colorful Stylish Shirt
+                    />{product.title}
+                   
                   </td>
-                  <td className='align-middle'>$150</td>
+                  <td className='align-middle'>{product.price}</td>
                   <td className='align-middle'>
                     <div
                       className='input-group quantity mx-auto'
@@ -40,7 +64,7 @@ function Cart() {
                       <input
                         type='text'
                         className='form-control form-control-sm bg-secondary text-center'
-                        value='1'
+                        value={product.quantity}
                       />
                       <div className='input-group-btn'>
                         <button className='btn btn-sm btn-primary btn-plus'>
@@ -49,165 +73,16 @@ function Cart() {
                       </div>
                     </div>
                   </td>
-                  <td className='align-middle'>$150</td>
+                  <td className='align-middle'>{product.price * product.quantity }</td>
                   <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'>
+                    <button className='btn btn-sm btn-primary'onClick={()=>deleteitem(product._id)}>
                       <i className='fa fa-times'></i>
                     </button>
                   </td>
                 </tr>
-                <tr>
-                  <td className='align-middle'>
-                    <img
-                      src='img/product-2.jpg'
-                      alt=''
-                      style={{ width: '50px' }}
-                    />{' '}
-                    Colorful Stylish Shirt
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <div
-                      className='input-group quantity mx-auto'
-                      style={{ width: '100px' }}>
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-minus'>
-                          <i className='fa fa-minus'></i>
-                        </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control form-control-sm bg-secondary text-center'
-                        value='1'
-                      />
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-plus'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'>
-                      <i className='fa fa-times'></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td className='align-middle'>
-                    <img
-                      src='img/product-3.jpg'
-                      alt=''
-                      style={{ width: '50px' }}
-                    />{' '}
-                    Colorful Stylish Shirt
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <div
-                      className='input-group quantity mx-auto'
-                      style={{ width: '100px' }}>
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-minus'>
-                          <i className='fa fa-minus'></i>
-                        </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control form-control-sm bg-secondary text-center'
-                        value='1'
-                      />
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-plus'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'>
-                      <i className='fa fa-times'></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td className='align-middle'>
-                    <img
-                      src='img/product-4.jpg'
-                      alt=''
-                      style={{ width: '50px' }}
-                    />{' '}
-                    Colorful Stylish Shirt
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <div
-                      className='input-group quantity mx-auto'
-                      style={{ width: '100px' }}>
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-minus'>
-                          <i className='fa fa-minus'></i>
-                        </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control form-control-sm bg-secondary text-center'
-                        value='1'
-                      />
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-plus'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'>
-                      <i className='fa fa-times'></i>
-                    </button>
-                  </td>
-                </tr>
-                <tr>
-                  <td className='align-middle'>
-                    <img
-                      src='img/product-5.jpg'
-                      alt=''
-                      style={{ width: '50px' }}
-                    />{' '}
-                    Colorful Stylish Shirt
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <div
-                      className='input-group quantity mx-auto'
-                      style={{ width: '100px' }}>
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-minus'>
-                          <i className='fa fa-minus'></i>
-                        </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control form-control-sm bg-secondary text-center'
-                        value='1'
-                      />
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-plus'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td className='align-middle'>$150</td>
-                  <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'>
-                      <i className='fa fa-times'></i>
-                    </button>
-                  </td>
-                </tr>
+               
+                 )
+               })}
               </tbody>
             </table>
           </div>

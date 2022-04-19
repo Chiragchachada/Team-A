@@ -1,16 +1,29 @@
 import React, { useState } from "react";
 import {Modal} from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { addtoCart } from "../../store/cart-reducer";
+import Jwt_decode from 'jwt-decode'
+
 // import '../../css/Style.css'
 
 
 export default function Product({ product }) {
   const [quantity, setquantity] = useState();
-  //const [varient, setvarient] = useState("small");
-
   const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => {
+      return state.au.auth
+    })
+
+    const userid = user.id
+
+
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const addToCart=(product, userid, quantity)=>{
+    dispatch(addtoCart(product, userid, quantity))
+  }
 
   return (
     <div
@@ -55,7 +68,7 @@ export default function Product({ product }) {
        
 
         <div className="m-1 w-100">
-          <button className="btn btn-primary rounded shadow"> ADD TO CART</button>
+          <button className="btn btn-primary rounded shadow"onClick={()=>addToCart(product,userid,quantity)}> ADD TO CART</button>
         </div>
       </div>
 
