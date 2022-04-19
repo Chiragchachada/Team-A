@@ -18,8 +18,9 @@ export default function Login() {
     console.log(state);
     return state.au.auth;
   });
-
-  if (user.auth === true) {
+   console.log("user", user);
+   
+  if (user.auth ) {
     navigate('/Home');
   } else {
     console.log('Display error message!');
