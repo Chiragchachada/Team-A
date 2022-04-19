@@ -43,12 +43,14 @@ function Cart() {
                {cart.map((product)=>{
                  return(
                   <tr>
-                  <td className='align-middle'>
-                    <img
+                  <td className='d-flex align-middle'>
+                    <span className='d-flex justify-items-start'><img
                       src={product.image}
                       alt=''
+                      className=""
                       style={{ width: '50px' }}
-                    />{product.title}
+                    /></span>
+                    <span className='align-end'>{product.title}</span>
                    
                   </td>
                   <td className='align-middle'>{product.price}</td>
