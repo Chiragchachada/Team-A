@@ -1,12 +1,15 @@
 import React, { useEffect } from 'react';
 import './Categories.css';
 import Slider from './Slider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../store/product-reducer'
 
 
 function Catgories() {
+
+  const navigate = useNavigate();
+
   const products = useSelector((state) => {
       return state.pr.products
     })
@@ -22,6 +25,11 @@ function Catgories() {
       console.log('Init ... View Products .... ');
       dispatch(fetchProducts())
     }, [dispatch])
+
+    function handleproducts(category){
+      navigate("/cat", {state:category});
+
+    }
   return (
     <>
       <Slider />
@@ -30,7 +38,7 @@ function Catgories() {
         <div className='row px-xl-5 pb-3'>
           
          {products.map((category)=>{;
-           return( <div className='col-lg-4 col-md-6 pb-1  '>
+           return( <div className='col-lg-4 col-md-6 pb-1' onClick={()=>handleproducts(category)}>
            <div  className=' cat-item d-flex flex-column border card1  cart-item-padding1'>
              <p className='text-right'>{category.products.length} Products</p>
              <Link

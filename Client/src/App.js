@@ -8,10 +8,10 @@ import { useSelector } from 'react-redux';
 import CheckoutPage from './component/CheckoutPage';
 import Catgories from './component/Categories';
 import Homescreen from './screens/Homescreen'
-
 import Login from './component/Login';
 import Signup from './component/Signup';
 import Cart from './component/Cart';
+import CategoryProducts from './component/CategoryProducts';
 
 function App() {
   const user = useSelector((state) => {
@@ -31,20 +31,11 @@ function App() {
         <Route exact path='/Categories' element={<Catgories />} />
         <Route exact path='/Signup' element={<Signup />} />
         <Route exact path='/Login' element={<Login/>} />
+        <Route exact path='/cat' element={<CategoryProducts/>} />
+
 
 
      
-      {/* <Routes> */}
-        {/* <Route exact path='/' element={<Catgories />} />
-        <Route exact path='/shop' element={ <Homescreen />} />
-        <Route exact path='/checkout' element={<CheckoutPage />} />
-
-        <Route exact path='login' element={<Login />} />
-        <Route exact path='signup' element={<Signup />} />
-
-        <Route element={<LoginRestriction />}></Route>
-
-        <Route element={<PrivateRoute />}></Route> */}
       </Routes>
     </div>
   );
