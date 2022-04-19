@@ -34,9 +34,8 @@ exports.login = asyncHandler(async (req, res, next) => {
     if(user.role === "user"){
         res.json({
             auth:true,
-            token:token,
-            user:user.username,
-            userId:user._id
+            token:token
+            
         })
       }else{
           res.status(403).json({

@@ -28,15 +28,7 @@ export default cartReducer.reducer
 
 const baseUrl = 'http://localhost:5000/cart/'
 
-// export const fetchCart = () => {
-//   return async(dispatch) => {
-//       let response = await globalFetch(baseUrl, "GET" );
-//       console.log("res", response);
-//       let data =  response.json();
-//       dispatch(FETCH_CART(data));
 
-//   }
-// }
 
 
 
@@ -65,7 +57,7 @@ export const fetchCart = (id) => {
 
 
 
-export const addtoCart = (product, userid) => {
+export const addtoCart = (product, userid, quantity) => {
   return async(dispatch) => {
     //  console.log("userid", userid);
       let response = await fetch(baseUrl + "create", {
@@ -74,14 +66,16 @@ export const addtoCart = (product, userid) => {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({title:product.title,
-          category:product.category,
+          productid:product._id,
         price:product.price,
+        description:product.description,
+        quantity:quantity,
       image:product.image,
       user:userid
     })
       });
       let data = await response.json();
-      console.log(data);
+            
       dispatch(ADD_TO_CART(product));
       alert("Product Added to Cart")
 

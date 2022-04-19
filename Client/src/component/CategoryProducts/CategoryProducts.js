@@ -1,10 +1,21 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+import { addtoCart } from '../../store/cart-reducer';
 
 export default function CategoryProducts() {
+
+    const dispatch = useDispatch();
+  const user = useSelector((state) => {
+      return state.au.auth
+    })
     const location = useLocation();
     const category = location.state;
-    console.log("qw",category);
+    const userid = user.id
+    const addToCart=(product, userid )=>{
+        dispatch(addtoCart(product, userid))
+      }
+   
 
   if(category){
       return(<><div class="col-lg-9 mx-auto col-md-12">
@@ -31,7 +42,7 @@ export default function CategoryProducts() {
                       </div>
                       <div class="card-footer d-flex justify-content-between bg-light border">
                           <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                          <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                          <a  onClick={()=>addToCart(product,userid)} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                       </div>
                   </div>
               </div>

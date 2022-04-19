@@ -25,7 +25,7 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
-      
+
       <Routes>
         <Route path='/Shop' element={<Homescreen />} />
         <Route path='/Cart' element={<Cart />} />
@@ -34,12 +34,9 @@ function App() {
         <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/Signup' element={<Signup />} />
         <Route exact path='/Login' element={<Login />} />
-        <Route exact path='/CategoryProduct' element={<CategoryProducts/>} />
+        <Route exact path='/CategoryProduct' element={<CategoryProducts />} />
 
-        <Route exact path='/Detail' element={<DetailsProduct/>} />
-
-
-     
+        <Route exact path='/Detail' element={<DetailsProduct />} />
       </Routes>
       <Footer />
     </div>
