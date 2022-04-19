@@ -11,10 +11,6 @@ import Catgories from './component/home/Categories';
 import CheckoutPage from './component/checkout/CheckoutPage'
 import Signup from './component/signup/Signup';
 import Login from './component/login/Login';
-
-import Login from './component/Login';
-import Signup from './component/Signup';
-import Cart from './component/Cart';
 import Footer from './component/Footer';
 
 function App() {
