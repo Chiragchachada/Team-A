@@ -11,7 +11,7 @@ export default function Contact(){
         <div className="d-flex flex-column align-items-center justify-content-center" >
             <h1 className="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
             <div className="d-inline-flex">
-                <p className="m-0"><Link to='/Home'>Home</Link></p>
+                <p className="m-0"><Link to='/'>Home</Link></p>
                 <p className="m-0 px-2">-</p>
                 <p className="m-0">Contact</p>
             </div>
