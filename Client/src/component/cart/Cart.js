@@ -5,25 +5,33 @@ import { deleteFromCart, fetchCart } from '../../store/cart-reducer';
 // import '../../css/Style.css'
 
 function Cart() {
-  const [ fetch, setFetch] =useState(false)
+  const [fetch, setFetch] = useState(false)
   const dispatch = useDispatch();
   const cart = useSelector((state) => {
     console.log(state)
-      return state.cr.cart
+    return state.cr.cart
+  })
+  const auth = (state) => {
+    return state.au.auth
+  }
+  const user = useSelector(auth)
+  const id = user.id
+  useEffect(() => {
+    dispatch(fetchCart({ id: id }));
+  }, [fetch]);
+  function deleteitem(id) {
+    dispatch(deleteFromCart(id))
+    setFetch(!fetch)
+
+  }
+  function total() {
+    let total = 0
+    cart.map(product => {
+      total += product.price * product.quantity
     })
-    const auth = (state) => {
-      return state.au.auth}
-      const user = useSelector(auth)
-      const id = user.id
-      useEffect(() => {
-        dispatch(fetchCart({id:id}));
-      }, [fetch]);
-    function deleteitem(id){
-      dispatch(deleteFromCart(id))
-      setFetch(!fetch)
-      
-    }
-    
+    return total
+  }
+
   return (
     <>
       <div className='container-fluid pt-5'>
@@ -40,51 +48,49 @@ function Cart() {
                 </tr>
               </thead>
               <tbody className='align-middle'>
-               {cart.map((product)=>{
-                 return(
-                  <tr>
-                  <td className='d-flex align-middle'>
-                    <span className='d-flex justify-items-start'><img
-                      src={product.image}
-                      alt=''
-                      className=""
-                      style={{ width: '50px' }}
-                    /></span>
-                    <span className='align-end'>{product.title}</span>
-                   
-                  </td>
-                  <td className='align-middle'>{product.price}</td>
-                  <td className='align-middle'>
-                    <div
-                      className='input-group quantity mx-auto'
-                      style={{ width: '100px' }}>
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-minus'>
-                          <i className='fa fa-minus'></i>
+                {cart.map((product) => {
+                  return (
+                    <tr>
+                      <td className='align-middle'>
+                        <img
+                          src={product.image}
+                          alt=''
+                          style={{ width: '50px' }}
+                        />{product.title}
+
+                      </td>
+                      <td className='align-middle'>{product.price}</td>
+                      <td className='align-middle'>
+                        <div
+                          className='input-group quantity mx-auto'
+                          style={{ width: '100px' }}>
+                          <div className='input-group-btn'>
+                            <button className='btn btn-sm btn-primary btn-minus'>
+                              <i className='fa fa-minus'></i>
+                            </button>
+                          </div>
+                          <input
+                            type='text'
+                            className='form-control form-control-sm bg-secondary text-center'
+                            value={product.quantity}
+                          />
+                          <div className='input-group-btn'>
+                            <button className='btn btn-sm btn-primary btn-plus'>
+                              <i className='fa fa-plus'></i>
+                            </button>
+                          </div>
+                        </div>
+                      </td>
+                      <td className='align-middle'>{product.price * product.quantity}</td>
+                      <td className='align-middle'>
+                        <button className='btn btn-sm btn-primary' onClick={() => deleteitem(product._id)}>
+                          <i className='fa fa-times'></i>
                         </button>
-                      </div>
-                      <input
-                        type='text'
-                        className='form-control form-control-sm bg-secondary text-center'
-                        value={product.quantity}
-                      />
-                      <div className='input-group-btn'>
-                        <button className='btn btn-sm btn-primary btn-plus'>
-                          <i className='fa fa-plus'></i>
-                        </button>
-                      </div>
-                    </div>
-                  </td>
-                  <td className='align-middle'>{product.price * product.quantity }</td>
-                  <td className='align-middle'>
-                    <button className='btn btn-sm btn-primary'onClick={()=>deleteitem(product._id)}>
-                      <i className='fa fa-times'></i>
-                    </button>
-                  </td>
-                </tr>
-               
-                 )
-               })}
+                      </td>
+                    </tr>
+
+                  )
+                })}
               </tbody>
             </table>
           </div>
@@ -108,17 +114,17 @@ function Cart() {
               <div className='card-body'>
                 <div className='d-flex justify-content-between mb-3 pt-1'>
                   <h6 className='font-weight-medium'>Subtotal</h6>
-                  <h6 className='font-weight-medium'>$150</h6>
+                  <h6 className='font-weight-medium'>{total()}</h6>
                 </div>
                 <div className='d-flex justify-content-between'>
                   <h6 className='font-weight-medium'>Shipping</h6>
-                  <h6 className='font-weight-medium'>$10</h6>
+                  <h6 className='font-weight-medium'>$0</h6>
                 </div>
               </div>
               <div className='card-footer border-secondary bg-transparent'>
                 <div className='d-flex justify-content-between mt-2'>
                   <h5 className='font-weight-bold'>Total</h5>
-                  <h5 className='font-weight-bold'>$160</h5>
+                  <h5 className='font-weight-bold'>{total()}</h5>
                 </div>
                 <button className='btn btn-block btn-primary my-3 py-3'>
                   Proceed To Checkout
