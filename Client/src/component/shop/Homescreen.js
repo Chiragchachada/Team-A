@@ -4,10 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../../store/product-reducer';
 import { Link } from 'react-router-dom';
 export default function Homescreen() {
-
-const [name, setName] = useState('');
-
-
+  const [name, setName] = useState('');
 
   const ShopData = [];
   console.log(ShopData);
@@ -29,46 +26,37 @@ const [name, setName] = useState('');
   });
   const dispatch = useDispatch();
 
-  const priceFilter = []
+  const priceFilter = [];
 
-for (let i=0; i < ShopData.length; i++){
-  let dat = ShopData[i].price
-  priceFilter.push(dat)
-}
-
-// console.log('price',priceFilter);
-const price = priceFilter.filter((x) => x >= 0 && x <=300 )
-const price1 = priceFilter.filter((x) => x >= 300 && x <=800 )
-const price2 = priceFilter.filter((x) => x >= 800 && x <=10000 )
-const price3 = priceFilter.filter((x) => x >= 10000 && x <=30000 )
-const price4 = priceFilter.filter((x) => x >= 30000 && x <=90000 )
-
-
-
-
-const filter = (e) => {
- const keyword = e.target.value
-
-  if(keyword !== ''){
-    const data = ShopData.filter((user) => {
-      return user.title.toLowerCase().includes(keyword.toLowerCase())
-    })
-    setFoundUsers(data)
-  } else {
-    setFoundUsers(ShopData)
+  for (let i = 0; i < ShopData.length; i++) {
+    let dat = ShopData[i].price;
+    priceFilter.push(dat);
   }
-setName(keyword)
-}
 
+  // console.log('price',priceFilter);
+  const price = priceFilter.filter((x) => x >= 0 && x <= 300);
+  const price1 = priceFilter.filter((x) => x >= 300 && x <= 800);
+  const price2 = priceFilter.filter((x) => x >= 800 && x <= 10000);
+  const price3 = priceFilter.filter((x) => x >= 10000 && x <= 30000);
+  const price4 = priceFilter.filter((x) => x >= 30000 && x <= 90000);
 
+  const filter = (e) => {
+    const keyword = e.target.value;
 
-
-
+    if (keyword !== '') {
+      const data = ShopData.filter((user) => {
+        return user.title.toLowerCase().includes(keyword.toLowerCase());
+      });
+      setFoundUsers(data);
+    } else {
+      setFoundUsers(ShopData);
+    }
+    setName(keyword);
+  };
 
   useEffect(() => {
     console.log('Init ... View Products .... ');
     dispatch(fetchProducts());
-   
   }, [dispatch]);
 
   return (
@@ -99,7 +87,6 @@ setName(keyword)
               <input
                 type='checkbox'
                 className='custom-control-input'
-              
                 id='price-all'></input>
               <label className='custom-control-label' for='price-all'>
                 All Price
@@ -138,7 +125,7 @@ setName(keyword)
                 className='custom-control-input'
                 id='price-3'></input>
               <label className='custom-control-label' for='price-3'>
-               800Rs - 10000RS
+                800Rs - 10000RS
               </label>
               <span className='badge border font-weight-normal text-muted'>
                 {price2.length}
@@ -150,7 +137,7 @@ setName(keyword)
                 className='custom-control-input'
                 id='price-4'></input>
               <label className='custom-control-label' for='price-4'>
-               10000Rs - 30000Rs
+                10000Rs - 30000Rs
               </label>
               <span className='badge border font-weight-normal text-muted'>
                 {price3.length}
@@ -178,7 +165,7 @@ setName(keyword)
               <input
                 type='text'
                 onChange={filter}
-               value={name}
+                value={name}
                 className='form-control mx-auto'
                 placeholder='Search by name'></input>
               <div className='input-group-append'>
@@ -189,11 +176,10 @@ setName(keyword)
             </div>
           </form>
           {foundUsers.map((products) => {
-          
             return (
               <div className='col-4'>
                 <div>
-                  <Product product={products}  />
+                  <Product product={products} />
                   {/* {products.title} */}
                 </div>
               </div>
