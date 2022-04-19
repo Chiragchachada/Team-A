@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Navbar from './component/Navbar';
+import Navbar from './component/navbar/Navbar';
 import LoginRestriction from './component/LoginRestriction';
 import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
-import CheckoutPage from './component/CheckoutPage';
-import Catgories from './component/Categories';
-import Homescreen from './screens/Homescreen'
-import Login from './component/Login';
-import Signup from './component/Signup';
-import Cart from './component/Cart';
-import CategoryProducts from './component/CategoryProducts';
+import Homescreen from '../src/component/shop/Homescreen';
+import Cart from './component/cart/Cart';
+import Catgories from './component/home/Categories';
+import CheckoutPage from './component/checkout/CheckoutPage';
+import Signup from './component/signup/Signup';
+import Login from './component/login/Login';
+import Footer from '../src/component/footer/Footer';
+import Contact from './component/contact/Contact';
+import CategoryProducts from './component/CategoryProducts/CategoryProducts';
 
 function App() {
   const user = useSelector((state) => {
@@ -22,21 +24,21 @@ function App() {
   return (
     <div className='App'>
       <Navbar />
+      
       <Routes>
-        <Route path='/Shop' element={<Homescreen/>}/>
-        <Route path='/Cart' element={<Cart/>}/>
-
-        <Route path='/Home' element={<Catgories/>}/>
+        <Route path='/Shop' element={<Homescreen />} />
+        <Route path='/Cart' element={<Cart />} />
+        <Route path='/Contact' element={<Contact />} />
+        <Route path='/Home' element={<Catgories />} />
         <Route exact path='/Checkout' element={<CheckoutPage />} />
-        <Route exact path='/Categories' element={<Catgories />} />
         <Route exact path='/Signup' element={<Signup />} />
-        <Route exact path='/Login' element={<Login/>} />
-        <Route exact path='/cat' element={<CategoryProducts/>} />
-
+        <Route exact path='/Login' element={<Login />} />
+        <Route exact path='/CategoryProduct' element={<CategoryProducts/>} />
 
 
      
       </Routes>
+      <Footer />
     </div>
   );
 }

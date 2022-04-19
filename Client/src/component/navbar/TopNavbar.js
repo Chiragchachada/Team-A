@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// import '../../css/Style.css'
 
 function TopNavbar() {
   return (
     <>
       <div class='row align-items-center py-3 px-xl-5'>
         <div class='col-lg-3 d-none d-lg-block'>
-          <Link to='' class='text-decoration-none'>
+          <Link to='Home' class='text-decoration-none'>
             <h1 class='m-0 display-5 font-weight-semi-bold'>
               <span class='text-primary font-weight-bold border px-3 mr-1'>
                 E
@@ -34,7 +35,7 @@ function TopNavbar() {
         <div class='col-lg-3 col-6 text-right'>
           <Link to='/Cart' class='btn border'>
             <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-            <span class='badge text-light'>0</span>
+            <span class='badge text-dark'>0</span>
           </Link>
         </div>
       </div>
