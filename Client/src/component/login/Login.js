@@ -18,7 +18,7 @@ export default function Login() {
    console.log("user", user);
    
   if (user.auth ) {
-    navigate('/Home');
+    navigate('/');
   } else {
     console.log('Display error message!');
   }
