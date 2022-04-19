@@ -32,7 +32,7 @@ function Navbar() {
                 id='navbarCollapse'
               >
                 <div className='navbar-nav  mr-auto py-0'>
-                  <Link to='/Home' className='nav-item nav-link '>
+                  <Link to='/' className='nav-item nav-link '>
                     Home
                   </Link>
                   <Link to='/Shop' className='nav-item nav-link '>

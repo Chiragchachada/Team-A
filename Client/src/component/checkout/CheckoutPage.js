@@ -1,5 +1,5 @@
 import React from 'react';
-// import '../../css/Style.css'
+
 
 
 function CheckoutPage() {

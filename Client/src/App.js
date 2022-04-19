@@ -14,6 +14,7 @@ import Login from './component/login/Login';
 import Footer from '../src/component/footer/Footer';
 import Contact from './component/contact/Contact';
 import CategoryProducts from './component/CategoryProducts/CategoryProducts';
+import DetailsProduct from './component/CategoryProducts/DetailsProduct';
 
 function App() {
   const user = useSelector((state) => {
@@ -29,11 +30,13 @@ function App() {
         <Route path='/Shop' element={<Homescreen />} />
         <Route path='/Cart' element={<Cart />} />
         <Route path='/Contact' element={<Contact />} />
-        <Route path='/Home' element={<Catgories />} />
+        <Route path='/' element={<Catgories />} />
         <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/Signup' element={<Signup />} />
         <Route exact path='/Login' element={<Login />} />
         <Route exact path='/CategoryProduct' element={<CategoryProducts/>} />
+
+        <Route exact path='/Detail' element={<DetailsProduct/>} />
 
 
      
