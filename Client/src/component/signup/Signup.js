@@ -1,5 +1,5 @@
 import React from 'react';
-import './Logincss.css';
+import './signup.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
@@ -49,7 +49,7 @@ function Signup() {
       role: Yup.string().required('Required'),
     }),
 
-    onSubmit:  (values) => {
+    onSubmit: (values) => {
       dispatch(
         singup({
           username: values.username,
@@ -63,8 +63,8 @@ function Signup() {
   });
 
   return (
-    <div className='text-center w-50 m-5-auto '>
-      <div className='myrightctn w-50 '>
+    <div className='d-flex main nodiv justify-content-evenly mb-28'>
+      <div className='myrightctn w-26 '>
         <h2 className='myrightctn_header'>Create New Account</h2>
         <form onSubmit={formik.handleSubmit}>
           <p>
@@ -170,7 +170,7 @@ function Signup() {
           </p>
 
           <p>
-            <button className='butt' type='submit' >
+            <button className='butt' type='submit'>
               Register
             </button>
           </p>

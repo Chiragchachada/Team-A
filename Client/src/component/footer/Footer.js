@@ -15,28 +15,18 @@ export default function Footer() {
                 </div>
                 <div className="col-lg-8 col-md-12">
                     <div className="row">
-                        <div className="col-md-4 mb-5">
-                            <h5 className="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div className="col-md-8 mb-5">
+                            <h5 className="font-weight-bold text-dark  mb-4">Quick Links</h5>
                             <div className="d-flex flex-column justify-content-start">
-                                <a className="text-dark mb-2" href="Home"><i className="fa fa-angle-right mr-2"></i>Home</a>
-                                <a className="text-dark mb-2" href="Home"><i className="fa fa-angle-right mr-2"></i>Our Shop</a>
-                                <a className="text-dark mb-2" href="About"><i className="fa fa-angle-right mr-2"></i>Shop Detail</a>
+                                <a className="text-dark mb-2" href="/"><i className="fa fa-angle-right mr-2"></i>Home</a>
+                                <a className="text-dark mb-2" href="Shop"><i className="fa fa-angle-right mr-2"></i>Our Shop</a>
+                             
                                 <a className="text-dark mb-2" href="Cart"><i className="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                                <a className="text-dark mb-2" href="Checkout"><i className="fa fa-angle-right mr-2"></i>Checkout</a>
+                            
                                 <a className="text-dark" href="Contact"><i className="fa fa-angle-right mr-2"></i>Contact Us</a>
                             </div>
                         </div>
-                        <div className="col-md-4 mb-5">
-                            <h5 className="font-weight-bold text-dark mb-4">Quick Links</h5>
-                            <div className="d-flex flex-column justify-content-start">
-                                <a className="text-dark mb-2" href="Home"><i className="fa fa-angle-right mr-2"></i>Home</a>
-                                <a className="text-dark mb-2" href="Home"><i className="fa fa-angle-right mr-2"></i>Our Shop</a>
-                                <a className="text-dark mb-2" href="About"><i className="fa fa-angle-right mr-2"></i>Shop Detail</a>
-                                <a className="text-dark mb-2" href="Cart"><i className="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                                <a className="text-dark mb-2" href="Checkout"><i className="fa fa-angle-right mr-2"></i>Checkout</a>
-                                <a className="text-dark" href="Contact"><i className="fa fa-angle-right mr-2"></i>Contact Us</a>
-                            </div>
-                        </div>
+                        
                         <div className="col-md-4 mb-5">
                             <h5 className="font-weight-bold text-dark mb-4">Prime Subscription</h5>
                             <form action="">
