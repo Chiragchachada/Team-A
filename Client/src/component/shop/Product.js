@@ -5,7 +5,7 @@ import {Modal} from "react-bootstrap";
 
 export default function Product({ product }) {
   const [quantity, setquantity] = useState();
-  const [varient, setvarient] = useState("small");
+  //const [varient, setvarient] = useState("small");
 
   const [show, setShow] = useState(false);
 
