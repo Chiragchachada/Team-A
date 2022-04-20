@@ -6,6 +6,7 @@ import { addtoCart } from '../../store/cart-reducer';
 import {addreview} from '../../store/product-reducer'
 
 function DetailsProduct() {
+    const[quantity, setquantity]= useState(0)
   const [comment, setComment] =useState('')
   const [name, setName] =useState('')
   const [emailId, setEmailId] =useState('')
@@ -26,6 +27,14 @@ function DetailsProduct() {
     const addToCart = (products, userid,quantity) => {
         dispatch(addtoCart(products, userid, quantity));
     };
+
+    
+    const incNum=()=>{
+     setquantity(quantity+1)
+    }
+    const decNum =()=>{
+    setquantity(quantity-1)
+    }
 
     function Addreview(){
         dispatch(addreview(data.category,{productid:products._id, reviews:{name:name, comment:comment, emailid:emailId}}))
