@@ -13,7 +13,6 @@ export default function Homescreen() {
   const shop = useSelector((state) => {
     return state.pr.products;
   });
-
   for (let i = 0; i < shop.length; i++) {
     let dt = shop[i].products;
     for (let j = 0; j < dt.length; j++) {
@@ -54,10 +53,23 @@ export default function Homescreen() {
     setName(keyword);
   };
 
+ 
+const filterData = (item) => {
+  const result = ShopData.filter((Data) => {
+    console.log(Data.price);
+    return Data.price === item;
+  })
+  setFoundUsers(result)
+}
+
+
+
+
   useEffect(() => {
     console.log('Init ... View Products .... ');
     dispatch(fetchProducts());
   }, [dispatch]);
+
 
   return (
     <div>
@@ -83,15 +95,17 @@ export default function Homescreen() {
         <div className='border-bottom  col-3 '>
           <h5 className='font-weight-semi-bold mb-4'>Filter by price</h5>
           <form>
-            <div className='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+            <div className='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 '>
               <input
                 type='checkbox'
-                className='custom-control-input'
+                
+                className='custom-control-input '
+                onClick={()=> filterData(499)}
                 id='price-all'></input>
-              <label className='custom-control-label' for='price-all'>
-                All Price
+              <label className='custom-control-label ' for='price-all'>
+                All Price 
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {priceFilter.length}
               </span>
             </div>
@@ -103,7 +117,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-1'>
                 0Rs - 300Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price.length}
               </span>
             </div>
@@ -115,7 +129,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-2'>
                 300Rs - 800Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price1.length}
               </span>
             </div>
@@ -127,7 +141,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-3'>
                 800Rs - 10000RS
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price2.length}
               </span>
             </div>
@@ -151,7 +165,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-5'>
                 30000Rs - 90000Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price4.length}
               </span>
             </div>
