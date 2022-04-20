@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './component/header/Navbar';
-import LoginRestriction from './component/LoginRestriction';
-import PrivateRoute from './component/PrivateRoute';
 import { useSelector } from 'react-redux';
 import Homescreen from '../src/component/shop/Homescreen';
 import Cart from './component/cart/Cart';

@@ -41,38 +41,22 @@ function Navbar() {
                   <Link to='/About' className='nav-item nav-link'>
                     About
                   </Link>
-                  {/* <div className='nav-item dropdown'>
-                    <Link
-                      to='#'
-                      className='nav-link dropdown-toggle'
-                      data-toggle='dropdown'
-                    >
-                      Pages
-                    </Link>
-                    <div className='dropdown-menu rounded-0 m-0'>
-                      <Link to='#' className='dropdown-item'>
-                        Shopping Cart
-                      </Link>
-                      <Link to='#' className='dropdown-item'>
-                        Checkout
-                      </Link>
-                    </div>
-                  </div> */}
+                  
                   <Link to='/Contact' className='nav-item nav-link'>
                     Contact
                   </Link>
                 </div>
                 <div className='navbar-nav ml-auto py-0'>
-                  <Link
+                  {!user.auth &&<Link
                     to='login'
                     className='nav-item nav-link'
                     style={{ marginLeft: '160%' }}
                   >
                     Login
-                  </Link>
-                  <Link to='signup' className='nav-item nav-link'>
+                  </Link>}
+                  {!user.auth && <Link to='signup' className='nav-item nav-link'>
                     Register
-                  </Link>
+                  </Link>}
                 </div>
               </div>
             </nav>
