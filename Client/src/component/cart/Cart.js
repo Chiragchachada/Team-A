@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteFromCart, fetchCart } from '../../store/cart-reducer';
+import { deleteFromCart, fetchCart, updatequantity } from '../../store/cart-reducer';
 import { addtoCart } from '../../store/cart-reducer';
 
 // import '../../css/Style.css'
@@ -18,8 +18,11 @@ function Cart() {
   }
   const user = useSelector(auth)
   const id = user.id
+
+  
   useEffect(() => {
-    dispatch(fetchCart({ id: id }));
+    if(user.auth){
+    dispatch(fetchCart({ id: id }));}
   }, [fetch]);
   
   
@@ -40,14 +43,18 @@ function Cart() {
   
 
 
-  const addToCart = (product, id,quantity) => {
-    dispatch(addtoCart(product, id, quantity));
-};
-const incNum=()=>{
+  
+const incNum=(id, quant)=>{
  setquantity(quantity+1)
+ dispatch(updatequantity(id, quant))
+ setFetch(!fetch)
 }
-const decNum =()=>{
+const decNum =(id, quant)=>{
 setquantity(quantity-1)
+dispatch(updatequantity(id, quant))
+ setFetch(!fetch)
+
+
 }
 
 
@@ -92,7 +99,7 @@ setquantity(quantity-1)
                           className='input-group quantity mx-auto'
                           style={{ width: '100px' }}>
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-minus'onClick={decNum} >
+                            <button className='btn btn-sm btn-primary btn-minus'onClick={()=>decNum(product._id, {quant:product.quantity-1})} >
                               <i className='fa fa-minus'></i>
                             </button>
                           </div>
@@ -102,7 +109,7 @@ setquantity(quantity-1)
                             value={product.quantity}
                           />
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-plus' onClick={incNum} >
+                            <button className='btn btn-sm btn-primary btn-plus' onClick={()=>incNum(product._id, {quant:product.quantity+1})} >
                               <i className='fa fa-plus'></i>
                             </button>
                           </div>

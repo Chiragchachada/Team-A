@@ -1,7 +1,7 @@
 import React from 'react';
 import './signup.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { singup } from '../../store/auth.reducer';
@@ -12,9 +12,17 @@ function Signup() {
   //   const [userName, setUserName] = useState('');
   //   const [confirmPass, setConfirmPass] = useState('');
   //   const [role, setRole] = useState('');
-
+  const user = useSelector((state) => {
+    console.log(state);
+    return state.au.auth;
+  });
   let navigate = useNavigate();
   const dispatch = useDispatch();
+  if (user.auth ) {
+    navigate('/');
+  } else {
+    console.log('Display error message!');
+  }
 
   //   const createAccount = (e) => {
   //     e.preventDefault();
@@ -58,7 +66,6 @@ function Signup() {
           role: values.role,
         })
       );
-      navigate('home');
     },
   });
 
@@ -168,6 +175,7 @@ function Signup() {
               </div>
             ) : null}
           </p>
+          <div className='font-bold mb-2'>{user.err}</div>
 
           <p>
             <button className='butt' type='submit'>

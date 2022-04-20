@@ -104,10 +104,18 @@ export const deleteFromCart = (id) => {
 
 
 
-// export const updatequantity = (quantity) => {
-//   return async(dispatch) => {
-//     
+export const updatequantity = (productid,quant) => {
+  console.log("lll", productid );
+  return async(dispatch) => {
+    let response = await fetch(baseUrl + 'updatecart/' + productid, {
+      method: 'PATCH',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(quant )
+      });
 
-//   }
-// }
-// // 
+
+  }
+}
+// 

@@ -62,7 +62,7 @@ function Navbar() {
                   {!user.auth && <Link to='signup' className='nav-item nav-link'>
                     Register
                   </Link>}
-                  <li onClick={()=>dispatch(logout())}>{user.auth &&<Link to="">Log out</Link>}</li>
+                   {user.auth &&<Link  className='nav-item nav-link' onClick={()=>dispatch(logout())} to="">Log out</Link>}
 
                 </div>
               </div>

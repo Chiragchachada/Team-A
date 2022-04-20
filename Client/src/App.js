@@ -41,7 +41,7 @@ function App() {
         <Route exact path='/Login' element={<Login />} />
         <Route exact path='/Signup' element={<Signup />} />
         </Route>
-   
+
 
          {/* Private Route */}
         <Route element={<PrivateRoute/>}>
