@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchProducts } from '../../store/product-reducer';
 // import '../../css/Style.css'
@@ -12,8 +12,8 @@ function TopNavbar() {
 
   const cart = useSelector((state) => {
     console.log(state)
-      return state.cr.cart
-    })
+    return state.cr.cart
+  })
   //   const shop = useSelector((state) => {
   //     return state.pr.products;
   //   });
@@ -23,8 +23,8 @@ function TopNavbar() {
   //       ShopData.push(dt[j]);
   //     }
   //   }
-  
- 
+
+
   //   useEffect(() => {
   //     console.log('Init ... View Products .... ');
   //     dispatch(fetchProducts());
