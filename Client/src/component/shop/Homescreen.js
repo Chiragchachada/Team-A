@@ -53,6 +53,9 @@ export default function Homescreen() {
     setName(keyword);
   };
 
+
+
+
  
 const filterData = (item) => {
   const result = ShopData.filter((Data) => {
@@ -92,7 +95,7 @@ const filterData = (item) => {
 
       <div className='d-flex'>
         {/* <!-- Size Start --> */}
-        <div className='border-bottom  col-3 '>
+        <div className='border-bottom ms-2 me-2 col-3 ' style={{width: '400px'}}>
           <h5 className='font-weight-semi-bold mb-4'>Filter by price</h5>
           <form>
             <div className='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 '>
@@ -100,7 +103,7 @@ const filterData = (item) => {
                 type='checkbox'
                 
                 className='custom-control-input '
-                onClick={()=> filterData(499)}
+                
                 id='price-all'></input>
               <label className='custom-control-label ' for='price-all'>
                 All Price 
@@ -175,7 +178,7 @@ const filterData = (item) => {
 
         <div className='row'>
           <form className='mb-5 '>
-            <div className='input-group col mx-auto' style={{ width: '450px' }}>
+            <div className='input-group col ' style={{ width: '450px' }}>
               <input
                 type='text'
                 onChange={filter}
@@ -191,7 +194,7 @@ const filterData = (item) => {
           </form>
           {foundUsers.map((products) => {
             return (
-              <div className='col-4'>
+              <div className='ms-2 ' style={{width: '320px'}}>
                 <div>
                   <Product product={products} />
                   {/* {products.title} */}
