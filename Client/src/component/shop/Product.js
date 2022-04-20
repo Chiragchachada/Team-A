@@ -3,6 +3,7 @@ import {Modal} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { addtoCart } from "../../store/cart-reducer";
 
+
 // import '../../css/Style.css'
 
 

@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteFromCart, fetchCart } from '../../store/cart-reducer';
+import { addtoCart } from '../../store/cart-reducer';
 
 // import '../../css/Style.css'
 
 function Cart() {
+  const[quantity, setquantity]= useState(0)
   const [fetch, setFetch] = useState(false)
   const dispatch = useDispatch();
   const cart = useSelector((state) => {
@@ -35,6 +37,27 @@ function Cart() {
     })
     return total
   }
+  
+
+
+  const addToCart = (product, id,quantity) => {
+    dispatch(addtoCart(product, id, quantity));
+};
+const incNum=()=>{
+ setquantity(quantity+1)
+}
+const decNum =()=>{
+setquantity(quantity-1)
+}
+
+
+
+
+
+
+
+
+
 
   return (
     <>
@@ -69,7 +92,7 @@ function Cart() {
                           className='input-group quantity mx-auto'
                           style={{ width: '100px' }}>
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-minus'>
+                            <button className='btn btn-sm btn-primary btn-minus'onClick={decNum} >
                               <i className='fa fa-minus'></i>
                             </button>
                           </div>
@@ -79,7 +102,7 @@ function Cart() {
                             value={product.quantity}
                           />
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-plus' onclick={product.quantity+1}>
+                            <button className='btn btn-sm btn-primary btn-plus' onClick={incNum} >
                               <i className='fa fa-plus'></i>
                             </button>
                           </div>

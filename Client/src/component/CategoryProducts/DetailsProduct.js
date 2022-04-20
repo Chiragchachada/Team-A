@@ -6,6 +6,7 @@ import { addtoCart } from '../../store/cart-reducer';
 
 
 function DetailsProduct() {
+    const [quantity, setquantity] = useState(1);
 
     const user = useSelector((state) => {
         return state.au.auth;
@@ -16,11 +17,15 @@ function DetailsProduct() {
 
     const products = locations.state;
     console.log("kd", products)
-    const addToCart = (products, userid) => {
-        dispatch(addtoCart(products, userid));
+    const addToCart = (products, userid,quantity) => {
+        dispatch(addtoCart(products, userid, quantity));
     };
-
-
+ const incNum=()=>{
+     setquantity(quantity+1)
+ }
+const decNum =()=>{
+    setquantity(quantity-1)
+}
     if (products) {
         return (
             <div className="container-fluid py-5">
@@ -57,19 +62,19 @@ function DetailsProduct() {
                         <div className="d-flex align-items-center mb-4 pt-2">
                             <div className="input-group quantity mr-3" style={{ width: '130px' }} >
                                 <div className="input-group-btn ">
-                                    <button className="btn btn-primary btn-minus" >
+                                    <button className="btn btn-primary btn-minus" onClick={decNum} >
                                         <i className="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <input type="text" className="form-control bg-secondary text-center" value="1"></input>
+                                <input type="text" className="form-control bg-secondary text-center" value={quantity}></input>
                                 <div className="input-group-btn ">
-                                    <button className="btn btn-primary btn-plus ">
+                                    <button onClick={incNum} className="btn btn-primary btn-plus ">
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                             <div className='text-center mx-auto' >
-                            <button className="btn btn-primary px-3 " onClick={() => addToCart(products, userid)}><i className="fa fa-shopping-cart mr-1 "></i> {' '} Add To Cart</button>
+                            <button className="btn btn-primary px-3 " onClick={() => addToCart(products, userid,quantity)}><i className="fa fa-shopping-cart mr-1 "></i> {' '} Add To Cart</button>
                             </div>
                         </div>
                         <div className="d-flex pt-2">
