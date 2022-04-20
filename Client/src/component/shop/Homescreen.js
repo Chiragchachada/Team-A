@@ -16,12 +16,12 @@ export default function Homescreen() {
   
   });
 
-  // for (let i = 0; i < shop.length; i++) {
-  //   let dt = shop[i].products;
-  //   for (let j = 0; j < dt.length; j++) {
-  //     ShopData.push(dt[j]);
-  //   }
-  // }
+  for (let i = 0; i < shop.length; i++) {
+    let dt = shop[i].products;
+    for (let j = 0; j < dt.length; j++) {
+      ShopData.push(dt[j]);
+    }
+  }
 
 const [...final] = shop
 
