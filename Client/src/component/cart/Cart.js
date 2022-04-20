@@ -19,11 +19,15 @@ function Cart() {
   useEffect(() => {
     dispatch(fetchCart({ id: id }));
   }, [fetch]);
+  
+  
   function deleteitem(id) {
     dispatch(deleteFromCart(id))
     setFetch(!fetch)
 
   }
+
+  
   function total() {
     let total = 0
     cart.map(product => {
@@ -75,7 +79,7 @@ function Cart() {
                             value={product.quantity}
                           />
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-plus'>
+                            <button className='btn btn-sm btn-primary btn-plus' onclick={product.quantity+1}>
                               <i className='fa fa-plus'></i>
                             </button>
                           </div>

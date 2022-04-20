@@ -100,5 +100,14 @@ export const deleteFromCart = (id) => {
         })
         .catch(err => console.log(err));
   }
-  // return {type: DELETE_EMPLOYEE, payload: {id}} 
 }
+
+
+
+// export const updatequantity = (quantity) => {
+//   return async(dispatch) => {
+//     
+
+//   }
+// }
+// // 
