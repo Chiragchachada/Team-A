@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Homescreen() {
   const [name, setName] = useState('');
   const [filterprice, setFilterprice] = useState(false);
+  const [filterData, setFilterdata] = useState(false);
 
   const ShopData = [];
   console.log(ShopData);
@@ -22,10 +23,6 @@ export default function Homescreen() {
       ShopData.push(dt[j]);
     }
   }
-
-const [...final] = shop
-
-console.log(final[2].products);
 
 
   const dispatch = useDispatch();
@@ -46,16 +43,23 @@ console.log(final[2].products);
 
 const productfilter = ShopData.filter((item)=> item.price  >= 0 && item.price <= 300)
 console.log(productfilter);
+
+
   const filter = (e) => {
     const keyword = e.target.value;
 
     if (keyword !== '') {
       const data = ShopData.filter((user) => {
         return user.title.toLowerCase().includes(keyword.toLowerCase());
+      
       });
       setFoundUsers(data);
+      setFilterdata(!filterData)
+      
     } else {
+    
       setFoundUsers(ShopData);
+     
     }
     setName(keyword);
   };
@@ -63,14 +67,7 @@ console.log(productfilter);
 
 
 
- 
-const filterData = (item) => {
-  const result = ShopData.filter((Data) => {
-    console.log(Data.price);
-    return Data.price === item;
-  })
-  setFoundUsers(result)
-}
+
 
 
 
@@ -193,7 +190,7 @@ const filterData = (item) => {
                 onChange={filter}
                 value={name}
                 className='form-control mx-auto'
-                placeholder='Search by name'></input>
+                placeholder='Search by title'></input>
               <div className='input-group-append'>
                 <span className='input-group-text bg-transparent text-primary'>
                   <i className='fa fa-search'></i>
@@ -201,7 +198,18 @@ const filterData = (item) => {
               </div>
             </div>
           </form>
-          {foundUsers.map((products) => {
+          {filterData?  foundUsers.map((products) => {
+            return (
+              <div className='ms-2 ' style={{width: '320px'}}>
+                <div>
+                <Product product={products}  />
+                 
+                  {/* {products.title} */}
+                </div>
+              </div>
+            );
+          }) : <>
+      {ShopData.map((products1) => {
             return (
               <div className='ms-2 ' style={{width: '320px'}}>
                 <div>
@@ -213,7 +221,7 @@ const filterData = (item) => {
                         ))
                       }
                     </div>) : (<div>
-                      <Product product={products}  />
+                      <Product product={products1}  />
                       </div>)
                   }
                  
@@ -222,6 +230,7 @@ const filterData = (item) => {
               </div>
             );
           })}
+          </>}
         </div>
       </div>
     </div>
