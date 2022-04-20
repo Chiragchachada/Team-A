@@ -102,3 +102,32 @@ export const deleteFromCart = (id) => {
   }
   // return {type: DELETE_EMPLOYEE, payload: {id}} 
 }
+
+
+
+// export const updatequantity = (quantity) => {
+//   return async(dispatch) => {
+//     //  console.log("userid", userid);
+//       let response = await fetch(baseUrl + "update", {
+//           method: 'POST',
+//           headers: {
+//               'Content-Type': 'application/json'
+//           },
+//           body: JSON.stringify({title:product.title,
+//           productid:product._id,
+//         price:product.price,
+//         description:product.description,
+//         quantity:quantity,
+//       image:product.image,
+//       user:userid
+//     })
+//       });
+//       let data = await response.json();
+            
+//       dispatch(ADD_TO_CART(product));
+//       alert("Product Added to Cart")
+
+
+//   }
+// }
+// // 

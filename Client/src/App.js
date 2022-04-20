@@ -13,6 +13,9 @@ import Footer from '../src/component/footer/Footer';
 import Contact from './component/contact/Contact';
 import CategoryProducts from './component/CategoryProducts/CategoryProducts';
 import DetailsProduct from './component/CategoryProducts/DetailsProduct';
+import LoginRestriction from './component/LoginRestriction';
+import PrivateRoute from './component/PrivateRoute';
+
 
 function App() {
   const user = useSelector((state) => {
@@ -26,15 +29,28 @@ function App() {
 
       <Routes>
         <Route path='/Shop' element={<Homescreen />} />
-        <Route path='/Cart' element={<Cart />} />
         <Route path='/Contact' element={<Contact />} />
         <Route path='/' element={<Catgories />} />
         <Route exact path='/Checkout' element={<CheckoutPage />} />
-        <Route exact path='/Signup' element={<Signup />} />
-        <Route exact path='/Login' element={<Login />} />
         <Route exact path='/CategoryProduct' element={<CategoryProducts />} />
 
         <Route exact path='/Detail' element={<DetailsProduct />} />
+     
+        {/* Login restriction Private Route */}
+        <Route element={<LoginRestriction/>}>
+        <Route exact path='/Login' element={<Login />} />
+        <Route exact path='/Signup' element={<Signup />} />
+        </Route>
+   
+
+         {/* Private Route */}
+        <Route element={<PrivateRoute/>}>
+       
+        <Route path='/Cart' element={<Cart />} />
+
+        </Route>
+
+
       </Routes>
       <Footer />
     </div>
