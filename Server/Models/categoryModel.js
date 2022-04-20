@@ -16,7 +16,7 @@ const categorySchema = new mongoose.Schema({
         price:Number,
         description:String,
         reviews:[{
-            username:String,
+            name:String,
             comment:String,
             emailid:String,
             createdAt: {

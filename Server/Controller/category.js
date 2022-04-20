@@ -81,10 +81,10 @@ exports.deleteItem =asyncHandler(async (req, res, next) => {
      })
 
 
-     exports.addreview = asyncHandler(async (req, res,next)=>{
-    
+     exports.addreview = async (req, res,next)=>{
+        console.log("req.body", req.body);
         const find = await categoryModel.findById(req.params.id);
-        const product = find.products.find((e)=> e.id === req.body.id)
+        const product = find.products.find((e)=> e.id === req.body.productid)
     
               product.reviews.push(req.body.reviews)
              find.save(function (err) {
@@ -98,7 +98,7 @@ exports.deleteItem =asyncHandler(async (req, res, next) => {
           });
     
       
-    })
+    }
 
 
     // exports.product = asyncHandler(async (req, res, next) => {

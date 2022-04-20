@@ -74,3 +74,19 @@ export const fetchProducts = () => {
     }
   }
 
+export const addreview = (id, productid) =>{
+  console.log("uu", id, "pprod", productid);
+  return async dispatch=>{
+    let response = await fetch(baseUrl + 'addreview/' + id, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify( productid)
+    });
+    let data = await response.json();
+    
+   dispatch(fetchProducts())
+   alert("Review Added Succesfully")
+  }
+}

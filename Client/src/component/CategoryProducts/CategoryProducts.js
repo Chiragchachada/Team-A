@@ -16,12 +16,15 @@ export default function CategoryProducts() {
         dispatch(addtoCart(product, userid))
     }
     function Hdeatails(product){
-        navigates("/detail", {state:product});
+        // var newData = Object.assign(product)
+
+        navigates("/detail", {state:{product:product, category:category._id}});
     
       }
 
 
     if (category) {
+        console.log("category", category);
         return (<><div class="col-lg-9 mx-auto col-md-12">
             <div class="row  pb-3">
 
@@ -45,7 +48,7 @@ export default function CategoryProducts() {
                                     </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
-                                    <a  onClick={()=>Hdeatails(product)} class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
+                                    <a  onClick={()=>Hdeatails(product )} class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
                                     <a onClick={() => addToCart(product, userid)} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
                                 </div>
                             </div>

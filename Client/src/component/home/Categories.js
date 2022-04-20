@@ -26,7 +26,7 @@ function Catgories() {
   }, [dispatch]);
   function handleproducts(category){
     navigate("/CategoryProduct", {state:category});
-
+  
   }
   return (
     <>
