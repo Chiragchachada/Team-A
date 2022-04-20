@@ -191,7 +191,7 @@ const filterData = (item) => {
           </form>
           {foundUsers.map((products) => {
             return (
-              <div className='col-4 '>
+              <div className='col-4'>
                 <div>
                   <Product product={products} />
                   {/* {products.title} */}
