@@ -5,6 +5,7 @@ import { fetchProducts } from '../../store/product-reducer';
 import { Link } from 'react-router-dom';
 export default function Homescreen() {
   const [name, setName] = useState('');
+  const [filterprice, setFilterprice] = useState(false);
 
   const ShopData = [];
   console.log(ShopData);
@@ -12,13 +13,19 @@ export default function Homescreen() {
   // ShopData.push(shop.)
   const shop = useSelector((state) => {
     return state.pr.products;
+  
   });
-  for (let i = 0; i < shop.length; i++) {
-    let dt = shop[i].products;
-    for (let j = 0; j < dt.length; j++) {
-      ShopData.push(dt[j]);
-    }
-  }
+
+  // for (let i = 0; i < shop.length; i++) {
+  //   let dt = shop[i].products;
+  //   for (let j = 0; j < dt.length; j++) {
+  //     ShopData.push(dt[j]);
+  //   }
+  // }
+
+const [...final] = shop
+
+console.log(final[2].products);
 
 
   const dispatch = useDispatch();
@@ -37,6 +44,8 @@ export default function Homescreen() {
   const price3 = priceFilter.filter((x) => x >= 10000 && x <= 30000);
   const price4 = priceFilter.filter((x) => x >= 30000 && x <= 90000);
 
+const productfilter = ShopData.filter((item)=> item.price  >= 0 && item.price <= 300)
+console.log(productfilter);
   const filter = (e) => {
     const keyword = e.target.value;
 
@@ -114,6 +123,8 @@ const filterData = (item) => {
               <input
                 type='checkbox'
                 className='custom-control-input'
+                value={filterprice}
+                onChange={()=> setFilterprice(!filterprice)}
                 id='price-1'></input>
               <label className='custom-control-label' for='price-1'>
                 0Rs - 300Rs
@@ -194,7 +205,18 @@ const filterData = (item) => {
             return (
               <div className='ms-2 ' style={{width: '320px'}}>
                 <div>
-                  <Product product={products} />
+                  {
+                    filterprice ? (<div>
+                      {
+                        productfilter.map((elem, i)=> (
+                          <Product product={elem} key={i} />
+                        ))
+                      }
+                    </div>) : (<div>
+                      <Product product={products}  />
+                      </div>)
+                  }
+                 
                   {/* {products.title} */}
                 </div>
               </div>
