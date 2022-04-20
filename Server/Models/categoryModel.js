@@ -16,8 +16,14 @@ const categorySchema = new mongoose.Schema({
         price:Number,
         description:String,
         reviews:[{
-            userid:String,
-            comment:String
+            username:String,
+            comment:String,
+            emailid:String,
+            createdAt: {
+                type: Date,
+                default: Date.now()
+            }
+
         }]
         
        }
