@@ -1,8 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+// import cartReducer from '../../store/cart-reducer';
 // import '../../css/Style.css'
 
 function TopNavbar() {
+  const cart = useSelector((state) => {
+    console.log(state)
+    return state.cr.cart
+  })
   return (
     <>
       <div class='row align-items-center py-3 px-xl-5'>
@@ -35,7 +41,7 @@ function TopNavbar() {
         <div class='col-lg-3 col-6 text-right'>
           <Link to='/Cart' class='btn border'>
             <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-            <span class='badge text-dark'>0</span>
+            <span class='badge text-dark'>{cart.length}</span>
           </Link>
         </div>
       </div>
