@@ -1,15 +1,33 @@
 const mongoose = require("mongoose")
 const checkoutSchema = new mongoose.Schema({
-    checkoutData:[{
-        type:Array
+    billingAddress: [{
+        firstName: String,
+        lastName: String,
+        addressLine1: String,
+        addressLine2: String,
+        city: String,
+        state: String,
+        zip: Number,
+        country: String,
+        phone: Number
     }],
-    user:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"userSchema"
-    }
-   
-},
-    { collection: "checkout" });
+    shippingAddress: [
+        {
+            firstName: String,
+            lastName: String,
+            addressLine1: String,
+            addressLine2: String,
+            city: String,
+            state: String,
+            zip: Number,
+            country: String,
+            phone: Number
+        }]
+
+});
 
 const checkout = mongoose.model("checkoutSchema", checkoutSchema)
 module.exports = checkout
+
+
+

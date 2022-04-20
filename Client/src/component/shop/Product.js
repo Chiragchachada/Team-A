@@ -27,8 +27,8 @@ export default function Product({ product }) {
 
   return (
     <div
-      style={{ margin: "50px", borderRadius:'40px' }}
-      className="shadow-lg p-3 mb-5 bg-white  cat-item "
+      style={{ borderRadius:'30px' }}
+      className="shadow-lg p-1 mb-5 bg-white cat-item "
     >
      <div onClick={handleShow}  style={{cursor:'pointer'}} className='cat-item'>
      <h1 id="small">{product.title}</h1>

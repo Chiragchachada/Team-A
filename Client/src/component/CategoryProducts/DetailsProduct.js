@@ -3,10 +3,14 @@ import { useLocation } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addtoCart } from '../../store/cart-reducer';
-
+import {addreview} from '../../store/product-reducer'
 
 function DetailsProduct() {
-    const [quantity, setquantity] = useState(1);
+  const [comment, setComment] =useState('')
+  const [name, setName] =useState('')
+  const [emailId, setEmailId] =useState('')
+
+  const navigate = useNavigate();
 
     const user = useSelector((state) => {
         return state.au.auth;
@@ -15,18 +19,25 @@ function DetailsProduct() {
     const userid = user.id;
     const locations = useLocation()
 
-    const products = locations.state;
+    const data = locations.state;
+    
+    const products = data.product
     console.log("kd", products)
     const addToCart = (products, userid,quantity) => {
         dispatch(addtoCart(products, userid, quantity));
     };
- const incNum=()=>{
-     setquantity(quantity+1)
- }
-const decNum =()=>{
-    setquantity(quantity-1)
-}
-    if (products) {
+
+    function Addreview(){
+        dispatch(addreview(data.category,{productid:products._id, reviews:{name:name, comment:comment, emailid:emailId}}))
+        setName("")
+        setComment("")
+        setEmailId("")
+        
+        navigate("/")
+    }
+
+
+    if (data) {
         return (
             <div className="container-fluid py-5">
                 <div className="row px-xl-5">
@@ -150,52 +161,60 @@ const decNum =()=>{
                             <div className="tab-pane fade" id="tab-pane-3">
                                 <div className="row">
                                     <div className="col-md-6">
-                                        <h4 className="mb-4">1 review for {products.title}</h4>
+                                        <h4 className="mb-4">{products.reviews.length} review for {products.title}</h4>
                                         <div className="media mb-4">
-                                            {/*<img src="img/user.jpg" alt="Image" className="img-fluid mr-3 mt-1" style={{ width: '45px' }}></img> */}
-                                            <div className="media-body">
-                                                <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
-                                                <div className="text-primary mb-2">
+                                        <div className="media-body">
+                                          {products.reviews.map((review)=>{
+                                              console.log("review", review);
+                                            return(<>
+                                                <h6>{review.name}<small> - <i>{review.createdAt}</i></small></h6>
+                                                {/* <div className="text-primary mb-2">
                                                     <i className="fas fa-star"></i>
                                                     <i className="fas fa-star"></i>
                                                     <i className="fas fa-star"></i>
                                                     <i className="fas fa-star-half-alt"></i>
                                                     <i className="far fa-star"></i>
-                                                </div>
-                                                <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
-                                            </div>
+                                                </div> */}
+                                                <p>{review.comment}</p>
+                                                </>)
+                                          })}  
+                                          </div>
                                         </div>
                                     </div>
                                     <div className="col-md-6">
                                         <h4 className="mb-4">Leave a review</h4>
                                         <small>Your email address will not be published. Required fields are marked *</small>
                                         <div className="d-flex my-3">
-                                            <p className="mb-0 mr-2">Your Rating * :</p>
-                                            <div className="text-primary">
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                                <i className="far fa-star"></i>
-                                            </div>
+                                        {/* <p class="mb-0 mr-2">Your Rating * :</p>
+                                    <div class="text-primary">
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                    </div> */}
                                         </div>
-                                        <form>
-                                            <div className="form-group">
+                                        
+                                            <div className="form-group ">
                                                 <label for="message">Your Review *</label>
-                                                <textarea id="message" cols="30" rows="5" className="form-control"></textarea>
+                                                <textarea id="message" cols="30" rows="5" value={comment}
+                                                onChange={(e)=>setComment(e.target.value)} className="form-control"></textarea>
                                             </div>
+                                            
                                             <div className="form-group">
                                                 <label for="name">Your Name *</label>
-                                                <input type="text" className="form-control" id="name"></input>
+                                                <input type="text" className="form-control" value={name}
+                                               onChange={(e)=>setName(e.target.value)}id="text"></input>
                                             </div>
                                             <div className="form-group">
                                                 <label for="email">Your Email *</label>
-                                                <input type="email" className="form-control" id="email"></input>
+                                                <input type="email" className="form-control" value={emailId}
+                                               onChange={(e)=>setEmailId(e.target.value)}id="email"></input>
                                             </div>
-                                            <div className="form-group mb-0">
-                                                <input type="submit" value="Leave Your Review" className="btn btn-primary px-3"></input>
+                                            <div className="form-group">
+                                                <button  value="Leave Your Review"  onClick={()=>Addreview(data.category,{productid:products._id, reviews:{name:name, comment:comment, emailid:emailId}})} className="btn btn-primary px-3">Leave Your Review</button>
                                             </div>
-                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>

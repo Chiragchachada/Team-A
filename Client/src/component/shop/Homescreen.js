@@ -5,6 +5,7 @@ import { fetchProducts } from '../../store/product-reducer';
 import { Link } from 'react-router-dom';
 export default function Homescreen() {
   const [name, setName] = useState('');
+  const [filterprice, setFilterprice] = useState(false);
 
   const ShopData = [];
   console.log(ShopData);
@@ -12,6 +13,7 @@ export default function Homescreen() {
   // ShopData.push(shop.)
   const shop = useSelector((state) => {
     return state.pr.products;
+  
   });
 
   for (let i = 0; i < shop.length; i++) {
@@ -20,6 +22,10 @@ export default function Homescreen() {
       ShopData.push(dt[j]);
     }
   }
+
+const [...final] = shop
+
+console.log(final[2].products);
 
 
   const dispatch = useDispatch();
@@ -38,6 +44,8 @@ export default function Homescreen() {
   const price3 = priceFilter.filter((x) => x >= 10000 && x <= 30000);
   const price4 = priceFilter.filter((x) => x >= 30000 && x <= 90000);
 
+const productfilter = ShopData.filter((item)=> item.price  >= 0 && item.price <= 300)
+console.log(productfilter);
   const filter = (e) => {
     const keyword = e.target.value;
 
@@ -52,10 +60,26 @@ export default function Homescreen() {
     setName(keyword);
   };
 
+
+
+
+ 
+const filterData = (item) => {
+  const result = ShopData.filter((Data) => {
+    console.log(Data.price);
+    return Data.price === item;
+  })
+  setFoundUsers(result)
+}
+
+
+
+
   useEffect(() => {
     console.log('Init ... View Products .... ');
     dispatch(fetchProducts());
   }, [dispatch]);
+
 
   return (
     <div>
@@ -78,18 +102,20 @@ export default function Homescreen() {
 
       <div className='d-flex'>
         {/* <!-- Size Start --> */}
-        <div className='border-bottom  col-3 '>
+        <div className='border-bottom ms-2 me-2 col-3 ' style={{width: '400px'}}>
           <h5 className='font-weight-semi-bold mb-4'>Filter by price</h5>
           <form>
-            <div className='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3'>
+            <div className='custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3 '>
               <input
                 type='checkbox'
-                className='custom-control-input'
+                
+                className='custom-control-input '
+                
                 id='price-all'></input>
-              <label className='custom-control-label' for='price-all'>
-                All Price
+              <label className='custom-control-label ' for='price-all'>
+                All Price 
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {priceFilter.length}
               </span>
             </div>
@@ -97,11 +123,13 @@ export default function Homescreen() {
               <input
                 type='checkbox'
                 className='custom-control-input'
+                value={filterprice}
+                onChange={()=> setFilterprice(!filterprice)}
                 id='price-1'></input>
               <label className='custom-control-label' for='price-1'>
                 0Rs - 300Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price.length}
               </span>
             </div>
@@ -113,7 +141,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-2'>
                 300Rs - 800Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price1.length}
               </span>
             </div>
@@ -125,7 +153,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-3'>
                 800Rs - 10000RS
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price2.length}
               </span>
             </div>
@@ -149,7 +177,7 @@ export default function Homescreen() {
               <label className='custom-control-label' for='price-5'>
                 30000Rs - 90000Rs
               </label>
-              <span className='badge border font-weight-normal text-muted'>
+              <span className='badge border font-weight-normal text-muted shadow'>
                 {price4.length}
               </span>
             </div>
@@ -159,7 +187,7 @@ export default function Homescreen() {
 
         <div className='row'>
           <form className='mb-5 '>
-            <div className='input-group col mx-auto' style={{ width: '450px' }}>
+            <div className='input-group col ' style={{ width: '450px' }}>
               <input
                 type='text'
                 onChange={filter}
@@ -175,9 +203,20 @@ export default function Homescreen() {
           </form>
           {foundUsers.map((products) => {
             return (
-              <div className='col-4'>
+              <div className='ms-2 ' style={{width: '320px'}}>
                 <div>
-                  <Product product={products} />
+                  {
+                    filterprice ? (<div>
+                      {
+                        productfilter.map((elem, i)=> (
+                          <Product product={elem} key={i} />
+                        ))
+                      }
+                    </div>) : (<div>
+                      <Product product={products}  />
+                      </div>)
+                  }
+                 
                   {/* {products.title} */}
                 </div>
               </div>
