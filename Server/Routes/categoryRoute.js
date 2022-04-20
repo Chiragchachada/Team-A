@@ -20,12 +20,9 @@ router.route('/')
         .put(updatecategory)
 
     router.route('/addreview/:id')
-        // .get(addproduct)
         .post(addreview)
 
-    // router.route('/find/:id')
-    //     // .get(addproduct)
-    //     .get(product)
+    
         
 module.exports = router
 

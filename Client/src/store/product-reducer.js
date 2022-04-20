@@ -56,20 +56,7 @@ export const fetchProducts = () => {
 
 
 
-// export const deleteProduct = (id) => {
-//     // http communication
-//     console.log(id);
-//     return async dispatch=> {
-//       let response= await fetch(baseUrl +id, {
-//           method:"DELETE"
-//         })
-//         let data = await response.json
-//         console.log("r",data);
-//         dispatch(DELETE_PRODUCT({id}));
 
-          
-//     }
-//   }
 
   export const deleteProduct = (id) => {
     // http communication
@@ -86,3 +73,4 @@ export const fetchProducts = () => {
           
     }
   }
+
