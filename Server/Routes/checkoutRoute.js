@@ -1,15 +1,15 @@
 const express = require('express');
-const { createcheckout, getcheckout } = require('../Controller/checkout');
+const { createCheckout, getCheckout } = require('../Controller/checkout');
 
 const router = express.Router();
 
 
 
 router.route('/')
-    .post(createcheckout)
-    
+    .post(createCheckout)
+
 router.route('/')
-     .get(getcheckout)
+    .get(getCheckout)
 
 
 

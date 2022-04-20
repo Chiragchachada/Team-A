@@ -1,6 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
 import Jwt_decode from 'jwt-decode'
-import { useState } from 'react';
 
 const authReducer = createSlice({
     name: "auth",
