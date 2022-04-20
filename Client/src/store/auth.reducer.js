@@ -21,7 +21,7 @@ const authReducer = createSlice({
   export default authReducer.reducer
 
 
-  const baseUrl = 'http://localhost:5000/user/'
+  const baseUrl = 'http://localhost:4321/user/'
 
 
 
