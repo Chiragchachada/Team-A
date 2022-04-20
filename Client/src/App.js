@@ -35,18 +35,18 @@ function App() {
         <Route exact path='/CategoryProduct' element={<CategoryProducts />} />
 
         <Route exact path='/Detail' element={<DetailsProduct />} />
-     
-        {/* Login restriction Private Route */}
-        <Route element={<LoginRestriction/>}>
-        <Route exact path='/Login' element={<Login />} />
-        <Route exact path='/Signup' element={<Signup />} />
-        </Route>
-   
 
-         {/* Private Route */}
-        <Route element={<PrivateRoute/>}>
-       
-        <Route path='/Cart' element={<Cart />} />
+        {/* Login restriction Private Route */}
+        <Route element={<LoginRestriction />}>
+          <Route exact path='/Login' element={<Login />} />
+          <Route exact path='/Signup' element={<Signup />} />
+        </Route>
+
+
+        {/* Private Route */}
+        <Route element={<PrivateRoute />}>
+
+          <Route path='/Cart' element={<Cart />} />
 
         </Route>
 

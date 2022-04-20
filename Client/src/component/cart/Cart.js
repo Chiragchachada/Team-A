@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { deleteFromCart, fetchCart } from '../../store/cart-reducer';
 import { addtoCart } from '../../store/cart-reducer';
 
 // import '../../css/Style.css'
 
 function Cart() {
-  const[quantity, setquantity]= useState(0)
+  const [quantity, setquantity] = useState(0)
   const [fetch, setFetch] = useState(false)
   const dispatch = useDispatch();
+  let navigate = useNavigate()
   const cart = useSelector((state) => {
     console.log(state)
     return state.cr.cart
@@ -21,15 +23,15 @@ function Cart() {
   useEffect(() => {
     dispatch(fetchCart({ id: id }));
   }, [fetch]);
-  
-  
+
+
   function deleteitem(id) {
     dispatch(deleteFromCart(id))
     setFetch(!fetch)
 
   }
 
-  
+
   function total() {
     let total = 0
     cart.map(product => {
@@ -37,18 +39,26 @@ function Cart() {
     })
     return total
   }
-  
+
+  const checkOut = (product, quantity) => {
+    console.log("in checkout")
+    navigate('/checkout')
+    // dispatch(checkout(product, quantity))
 
 
-  const addToCart = (product, id,quantity) => {
+  }
+
+
+
+  const addToCart = (product, id, quantity) => {
     dispatch(addtoCart(product, id, quantity));
-};
-const incNum=()=>{
- setquantity(quantity+1)
-}
-const decNum =()=>{
-setquantity(quantity-1)
-}
+  };
+  const incNum = () => {
+    setquantity(quantity + 1)
+  }
+  const decNum = () => {
+    setquantity(quantity - 1)
+  }
 
 
 
@@ -92,7 +102,7 @@ setquantity(quantity-1)
                           className='input-group quantity mx-auto'
                           style={{ width: '100px' }}>
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-minus'onClick={decNum} >
+                            <button className='btn btn-sm btn-primary btn-minus' onClick={decNum} >
                               <i className='fa fa-minus'></i>
                             </button>
                           </div>
@@ -153,7 +163,7 @@ setquantity(quantity-1)
                   <h5 className='font-weight-bold'>Total</h5>
                   <h5 className='font-weight-bold'>{total()}</h5>
                 </div>
-                <button className='btn btn-block btn-primary my-3 py-3'>
+                <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut(cart, quantity)}>
                   Proceed To Checkout
                 </button>
               </div>

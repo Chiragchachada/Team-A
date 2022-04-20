@@ -1,8 +1,26 @@
 import React from 'react';
-
-
+import { useSelector } from 'react-redux';
 
 function CheckoutPage() {
+
+  const cart = useSelector((state) => {
+    console.log(state)
+    return state.cr.cart
+  })
+  const auth = (state) => {
+    return state.au.auth
+  }
+  const user = useSelector(auth)
+  const id = user.id
+
+  function total() {
+    let total = 0
+    cart.map(product => {
+      total += product.price * product.quantity
+    })
+    return total
+  }
+
   return (
     <div className='container-fluid pt-5'>
       {/* Checkout start */}
@@ -60,6 +78,7 @@ function CheckoutPage() {
                   <option selected>United States</option>
                   <option>Afghanistan</option>
                   <option>Albania</option>
+                  <option>India</option>
                   <option>Algeria</option>
                 </select>
               </div>
@@ -200,32 +219,27 @@ function CheckoutPage() {
             </div>
             <div className='card-body'>
               <h5 className='font-weight-medium mb-3'>Products</h5>
-              <div className='d-flex justify-content-between'>
-                <p>Colorful Stylish Shirt 1</p>
-                <p>$150</p>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>Colorful Stylish Shirt 2</p>
-                <p>$150</p>
-              </div>
-              <div className='d-flex justify-content-between'>
-                <p>Colorful Stylish Shirt 3</p>
-                <p>$150</p>
-              </div>
+              {cart.map(product => {
+                return (
+                  <div className='d-flex justify-content-between'>
+                    <p>{product.title}</p>
+                    <p>{product.price * product.quantity}</p>
+                  </div>)
+              })}
               <hr className='mt-0'></hr>
               <div className='d-flex justify-content-between mb-3 pt-1'>
                 <h6 className='font-weight-medium'>Subtotal</h6>
-                <h6 className='font-weight-medium'>$150</h6>
+                <h6 className='font-weight-medium'>{total()}</h6>
               </div>
               <div className='d-flex justify-content-between'>
                 <h6 className='font-weight-medium'>Shipping</h6>
-                <h6 className='font-weight-medium'>$10</h6>
+                <h6 className='font-weight-medium'>$0</h6>
               </div>
             </div>
             <div className='card-footer border-secondary bg-transparent'>
               <div className='d-flex justify-content-between mt-2'>
                 <h5 className='font-weight-bold'>Total</h5>
-                <h5 className='font-weight-bold'>$160</h5>
+                <h5 className='font-weight-bold'>{total()}</h5>
               </div>
             </div>
           </div>
@@ -242,7 +256,7 @@ function CheckoutPage() {
                     name='payment'
                     id='paypal'></input>
                   <label className='custom-control-label' for='paypal'>
-                    Paypal
+                    Credit Card
                   </label>
                 </div>
               </div>
@@ -254,7 +268,7 @@ function CheckoutPage() {
                     name='payment'
                     id='directcheck'></input>
                   <label className='custom-control-label' for='directcheck'>
-                    Direct Check
+                    UPI Transfer
                   </label>
                 </div>
               </div>
@@ -266,7 +280,7 @@ function CheckoutPage() {
                     name='payment'
                     id='banktransfer'></input>
                   <label className='custom-control-label' for='banktransfer'>
-                    Bank Transfer
+                    Debit Card
                   </label>
                 </div>
               </div>
