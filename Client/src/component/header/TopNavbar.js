@@ -1,13 +1,34 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { fetchProducts } from '../../store/product-reducer';
 // import '../../css/Style.css'
 
 function TopNavbar() {
+  // const [name, setName] = useState('');
+  // const [foundUsers, setFoundUsers] = useState(ShopData);
+
+  // const ShopData = [];
+
   const cart = useSelector((state) => {
     console.log(state)
-      return state.cr.cart
-    })
+    return state.cr.cart
+  })
+  //   const shop = useSelector((state) => {
+  //     return state.pr.products;
+  //   });
+  //   for (let i = 0; i < shop.length; i++) {
+  //     let dt = shop[i].products;
+  //     for (let j = 0; j < dt.length; j++) {
+  //       ShopData.push(dt[j]);
+  //     }
+  //   }
+
+
+  //   useEffect(() => {
+  //     console.log('Init ... View Products .... ');
+  //     dispatch(fetchProducts());
+  //   }, [dispatch]);
   return (
     <>
       <div class='row align-items-center py-3 px-xl-5'>
@@ -27,7 +48,10 @@ function TopNavbar() {
               <input
                 type='text'
                 class='form-control'
+                // onChange={filter}
+                // value={name}
                 placeholder='Search for products'
+
               />
               <div class='input-group-append'>
                 <span class='input-group-text bg-transparent text-primary'>

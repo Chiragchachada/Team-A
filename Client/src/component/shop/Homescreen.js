@@ -20,9 +20,7 @@ export default function Homescreen() {
     }
   }
 
-  const user = useSelector((state) => {
-    return state.au.auth;
-  });
+
   const dispatch = useDispatch();
 
   const priceFilter = [];

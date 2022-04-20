@@ -26,11 +26,11 @@ function DetailsProduct() {
             <div className="container-fluid py-5">
                 <div className="row px-xl-5">
 
-                    <div className="col-lg-5 pb-5">
-                        <div id="product-carousel" className="carousel slide" data-ride="carousel">
-                            <div className="carousel-inner border">
-                                <div className="carousel-item active">
-                                    <img className="w-100 h-100" src={products.image} alt="Image"></img>
+                    <div className="col-lg-5 pb-5 mx-auto">
+                        <div id="product-carousel" className="carousel slide mx-auto" data-ride="carousel">
+                            <div className="carousel-inner ">
+                                <div className="carousel-item active "   style={{ height: "300px", width: "300px" }}>
+                                    <img className="w-100 h-100"    src={products.image} alt="Image"></img>
                                 </div>
 
                             </div>
@@ -56,19 +56,21 @@ function DetailsProduct() {
 
                         <div className="d-flex align-items-center mb-4 pt-2">
                             <div className="input-group quantity mr-3" style={{ width: '130px' }} >
-                                <div className="input-group-btn">
+                                <div className="input-group-btn ">
                                     <button className="btn btn-primary btn-minus" >
                                         <i className="fa fa-minus"></i>
                                     </button>
                                 </div>
                                 <input type="text" className="form-control bg-secondary text-center" value="1"></input>
-                                <div className="input-group-btn">
-                                    <button className="btn btn-primary btn-plus">
+                                <div className="input-group-btn ">
+                                    <button className="btn btn-primary btn-plus ">
                                         <i className="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
-                            <button className="btn btn-primary px-3" onClick={() => addToCart(products, userid)}><i className="fa fa-shopping-cart mr-1"></i> {' '} Add To Cart</button>
+                            <div className='text-center mx-auto' >
+                            <button className="btn btn-primary px-3 " onClick={() => addToCart(products, userid)}><i className="fa fa-shopping-cart mr-1 "></i> {' '} Add To Cart</button>
+                            </div>
                         </div>
                         <div className="d-flex pt-2">
                             <p className="text-dark font-weight-medium mb-0 mr-2">Share on:</p>

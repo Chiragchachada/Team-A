@@ -5,7 +5,7 @@ const checkoutModel = require('../Models/checkoutModel');
 
 
 
-exports.createcheckout = async (req, res, next) => {
+exports.createCheckout = async (req, res, next) => {
     console.log('creating.. ', req.body);
     const product = await checkoutModel.create(req.body);
 
@@ -16,7 +16,7 @@ exports.createcheckout = async (req, res, next) => {
 
 }
 
-exports.getcheckout = async (req, res, next) => {
+exports.getCheckout = async (req, res, next) => {
     console.log('creating.. ', req.body);
     const product = await checkoutModel.find();
 

@@ -67,7 +67,7 @@ export default function Product({ product }) {
        
 
         <div className="m-1 w-100">
-          <button className="btn btn-primary rounded shadow"onClick={()=>addToCart(product,userid,quantity)}> ADD TO CART</button>
+          {user.auth && <button className="btn btn-primary rounded shadow"onClick={()=>addToCart(product,userid,quantity)}> ADD TO CART</button>}
         </div>
       </div>
 

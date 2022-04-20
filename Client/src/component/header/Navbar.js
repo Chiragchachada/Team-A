@@ -1,9 +1,10 @@
 import React from 'react';
 // import '../../css/Style.css'
-
+import { logout} from '../../store/auth.reducer'; 
 import TopNavbar from './TopNavbar';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchCart } from '../../store/cart-reducer';
 
 function Navbar() {
 
@@ -11,6 +12,10 @@ function Navbar() {
     console.log(state);
     return state.au.auth;
   });
+  const dispatch = useDispatch();
+ 
+
+
   return (
     <>
       <TopNavbar />
@@ -57,6 +62,8 @@ function Navbar() {
                   {!user.auth && <Link to='signup' className='nav-item nav-link'>
                     Register
                   </Link>}
+                  <li onClick={()=>dispatch(logout())}>{user.auth &&<Link to="">Log out</Link>}</li>
+
                 </div>
               </div>
             </nav>
