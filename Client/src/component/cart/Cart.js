@@ -21,10 +21,11 @@ function Cart() {
   const user = useSelector(auth)
   const id = user.id
 
-  
+
   useEffect(() => {
-    if(user.auth){
-    dispatch(fetchCart({ id: id }));}
+    if (user.auth) {
+      dispatch(fetchCart({ id: id }));
+    }
   }, [fetch]);
 
 
@@ -35,34 +36,34 @@ function Cart() {
   }
 
 
-  function total() {
+  function total(e) {
     let total = 0
     cart.map(product => {
-      total += product.price * product.quantity
+      total += (product.price * product.quantity) + e
     })
     return total
   }
 
   const checkOut = () => {
-    navigate("/Checkout", {state:cart});
+    navigate("/Checkout", { state: cart });
 
   }
 
 
 
-  
-const incNum=(id, quant)=>{
- setquantity(quantity+1)
- dispatch(updatequantity(id, quant))
- setFetch(!fetch)
-}
-const decNum =(id, quant)=>{
-setquantity(quantity-1)
-dispatch(updatequantity(id, quant))
- setFetch(!fetch)
+
+  const incNum = (id, quant) => {
+    setquantity(quantity + 1)
+    dispatch(updatequantity(id, quant))
+    setFetch(!fetch)
+  }
+  const decNum = (id, quant) => {
+    setquantity(quantity - 1)
+    dispatch(updatequantity(id, quant))
+    setFetch(!fetch)
 
 
-}
+  }
 
 
 
@@ -106,17 +107,18 @@ dispatch(updatequantity(id, quant))
                           className='input-group quantity mx-auto'
                           style={{ width: '100px' }}>
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-minus'onClick={()=>decNum(product._id, {quant:product.quantity-1})} >
+                            <button className='btn btn-sm btn-primary btn-minus' onClick={() => decNum(product._id, { quant: product.quantity - 1 })} >
                               <i className='fa fa-minus'></i>
                             </button>
                           </div>
                           <input
                             type='text'
+                            min="0"
                             className='form-control form-control-sm bg-secondary text-center'
                             value={product.quantity}
                           />
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-plus' onClick={()=>incNum(product._id, {quant:product.quantity+1})} >
+                            <button className='btn btn-sm btn-primary btn-plus' onClick={() => incNum(product._id, { quant: product.quantity + 1 })} >
                               <i className='fa fa-plus'></i>
                             </button>
                           </div>
@@ -155,17 +157,17 @@ dispatch(updatequantity(id, quant))
               <div className='card-body'>
                 <div className='d-flex justify-content-between mb-3 pt-1'>
                   <h6 className='font-weight-medium'>Subtotal</h6>
-                  <h6 className='font-weight-medium'>{total()}</h6>
+                  <h6 className='font-weight-medium'>{total(0)}</h6>
                 </div>
                 <div className='d-flex justify-content-between'>
                   <h6 className='font-weight-medium'>Shipping</h6>
-                  <h6 className='font-weight-medium'>$0</h6>
+                  <h6 className='font-weight-medium' >$20</h6>
                 </div>
               </div>
               <div className='card-footer border-secondary bg-transparent'>
                 <div className='d-flex justify-content-between mt-2'>
                   <h5 className='font-weight-bold'>Total</h5>
-                  <h5 className='font-weight-bold'>{total()}</h5>
+                  <h5 className='font-weight-bold'>{total(20)}</h5>
                 </div>
                 <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut()}>
                   Proceed To Checkout

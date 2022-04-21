@@ -177,7 +177,7 @@ function Signup() {
               </div>
             ) : null}
           </p>
-          <div className='font-bold mb-2'>{user.err}</div>
+          <div className='font-bold mb-2'>{user.existerr}</div>
 
           <p>
             <button className='butt' type='submit'>
