@@ -205,13 +205,13 @@ function CheckoutPage() {
               </div>
               <div className='d-flex justify-content-between'>
                 <h6 className='font-weight-medium'>Shipping</h6>
-                <h6 className='font-weight-medium'>$20</h6>
+                <h6 className='font-weight-medium'>20 Rs</h6>
               </div>
             </div>
             <div className='card-footer border-secondary bg-transparent'>
               <div className='d-flex justify-content-between mt-2'>
                 <h5 className='font-weight-bold'>Total</h5>
-                <h5 className='font-weight-bold'>{total(20)}</h5>
+                <h5 className='font-weight-bold'>{total(20)} Rs</h5>
               </div>
             </div>
           </div>
