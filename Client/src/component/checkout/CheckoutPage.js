@@ -1,9 +1,13 @@
 import React,{useState} from 'react';
-import { useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {useLocation, useNavigate } from 'react-router-dom';
+import { addcheckout } from '../../store/checkout-reducer';
 
 function CheckoutPage() {
-  
+  const dispatch = useDispatch();
+  let navigate = useNavigate()
+
+
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -30,14 +34,14 @@ function CheckoutPage() {
   console.log(values);
 
 
-  
+  const locations = useLocation()
+
   
   const auth = (state) => {
     return state.au.auth
   }
   const user = useSelector(auth)
   const id = user.id
-  const locations = useLocation
   const data = locations.state;
   console.log("qqq", data);
 
@@ -48,6 +52,11 @@ function CheckoutPage() {
       total += product.price * product.quantity
     })
     return total
+  }
+
+  function submitorder(values, id ,data){
+    dispatch(addcheckout(values, id ,data))
+    navigate('/')
   }
 
   return (
@@ -243,7 +252,7 @@ function CheckoutPage() {
               </div>
             </div>
             <div className='card-footer border-secondary bg-transparent'>
-              <button className='btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3'>
+              <button className='btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3' onClick={()=>submitorder(values,id ,data)}>
                 Place Order
               </button>
             </div>

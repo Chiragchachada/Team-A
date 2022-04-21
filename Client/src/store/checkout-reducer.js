@@ -19,19 +19,22 @@ const checkoutReducer = createSlice({
   export const {FETCH_DATA, ADD_DATA} = checkoutReducer.actions
   export default checkoutReducer.reducer
 
-  
+   
+  const baseUrl = 'http://localhost:4321/checkout/'
 
-  // export const addcheckout = (productid) =>{
-  //   return async dispatch=>{
-  //     let response = await fetch(baseUrl + 'createorder', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-type': 'application/json'
-  //       },
-  //       body: JSON.stringify( productid)
-  //     });
+
+  export const addcheckout = (billingAddress, userid ,cart) =>{
+    console.log("qqq", billingAddress, userid ,cart);
+    return async dispatch=>{
+      let response = await fetch(baseUrl,{
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json'
+        },
+        body: JSON.stringify({billingAddress, userid ,cart})
+      });
       
-  //    dispatch(fetchProducts())
-  //    alert("Review Added Succesfully")
-  //   }
-  // }
+     alert("Order Placed")
+    }
+    
+  }

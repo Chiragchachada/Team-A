@@ -112,6 +112,7 @@ dispatch(updatequantity(id, quant))
                           </div>
                           <input
                             type='text'
+                            min="0"
                             className='form-control form-control-sm bg-secondary text-center'
                             value={product.quantity}
                           />
