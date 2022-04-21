@@ -19,7 +19,9 @@ function Signup() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   if (user.auth ) {
-    navigate('/');
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
   } else {
     console.log('Display error message!');
   }
@@ -175,7 +177,7 @@ function Signup() {
               </div>
             ) : null}
           </p>
-          <div className='font-bold mb-2'>{user.err}</div>
+          <div className='font-bold mb-2'>{user.existerr}</div>
 
           <p>
             <button className='butt' type='submit'>

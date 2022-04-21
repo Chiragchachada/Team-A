@@ -33,7 +33,6 @@ function App() {
         <Route path='/Contact' element={<Contact />} />
         <Route path='/About' element={<About/>} />
         <Route path='/' element={<Catgories />} />
-        <Route exact path='/Checkout' element={<CheckoutPage />} />
         <Route exact path='/CategoryProduct' element={<CategoryProducts />} />
 
         <Route exact path='/Detail' element={<DetailsProduct />} />
@@ -49,6 +48,8 @@ function App() {
         <Route element={<PrivateRoute />}>
 
           <Route path='/Cart' element={<Cart />} />
+          <Route exact path='/Checkout' element={<CheckoutPage />} />
+
 
         </Route>
 
