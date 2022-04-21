@@ -1,9 +1,9 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
 function CheckoutPage() {
-  
+
   const initialValues = {
     firstname: "",
     lastname: "",
@@ -30,8 +30,8 @@ function CheckoutPage() {
   console.log(values);
 
 
-  
-  
+
+
   const auth = (state) => {
     return state.au.auth
   }
@@ -122,10 +122,10 @@ function CheckoutPage() {
               <div className='col-md-6 form-group'>
                 <label>Country</label>
                 <select className='custom-select'
-                 onChange={handleInputChange}
-                 name='country'
-                 value={values.country}>
-                  
+                  onChange={handleInputChange}
+                  name='country'
+                  value={values.country}>
+
                   <option value='India' selected>India</option>
                   <option value='USA'>USA</option>
                   <option value='Germany'>Germany</option>
@@ -163,11 +163,11 @@ function CheckoutPage() {
                   type='number'
                   placeholder='123'></input>
               </div>
-             
-              
+
+
             </div>
           </div>
-         
+
         </div>
         <div className='col-lg-4' style={{ marginBottom: '100px' }}>
           <div className='card border-secondary mb-5'>
