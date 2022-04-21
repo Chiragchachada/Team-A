@@ -2,23 +2,23 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addcheckout } from '../../store/checkout-reducer';
+import { toast, ToastContainer } from 'react-toastify';
 
 function CheckoutPage() {
   const dispatch = useDispatch();
-  let navigate = useNavigate()
-
+  let navigate = useNavigate();
 
   const initialValues = {
-    firstname: "",
-    lastname: "",
-    email: "",
-    mobileNo: "",
-    Addressline1: "",
-    Addressline2: "",
-    city: "",
-    country: "",
-    state: "",
-    zipCode: "",
+    firstname: '',
+    lastname: '',
+    email: '',
+    mobileNo: '',
+    Addressline1: '',
+    Addressline2: '',
+    city: '',
+    country: '',
+    state: '',
+    zipCode: '',
   };
 
   const [values, setValues] = useState(initialValues);
@@ -33,30 +33,36 @@ function CheckoutPage() {
 
   console.log(values);
 
+  const valNot = () => {
+    toast.success('Placed Order Successfully', {
+      position: 'top-center',
+      autoClose: 1000,
+    });
+  };
 
-  const locations = useLocation()
-
+  const locations = useLocation();
 
   const auth = (state) => {
-    return state.au.auth
-  }
-  const user = useSelector(auth)
-  const id = user.id
+    return state.au.auth;
+  };
+  const user = useSelector(auth);
+  const id = user.id;
   const data = locations.state;
-  console.log("qqq", data);
-
+  console.log('qqq', data);
 
   function total(e) {
-    let total = 0
-    data.map(product => {
-      total += (product.price * product.quantity) 
-    })
-    return total+e
+    let total = 0;
+    data.map((product) => {
+      total += product.price * product.quantity;
+    });
+    return total + e;
   }
 
   function submitorder(values, id, data) {
-    dispatch(addcheckout(values, id, data))
-    navigate('/')
+    dispatch(addcheckout(values, id, data));
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
   }
 
   return (
@@ -130,12 +136,14 @@ function CheckoutPage() {
               </div>
               <div className='col-md-6 form-group'>
                 <label>Country</label>
-                <select className='custom-select'
+                <select
+                  className='custom-select'
                   onChange={handleInputChange}
                   name='country'
                   value={values.country}>
-
-                  <option value='India' selected>India</option>
+                  <option value='India' selected>
+                    India
+                  </option>
                   <option value='USA'>USA</option>
                   <option value='Germany'>Germany</option>
                   <option value='Canada'>Canada</option>
@@ -172,11 +180,8 @@ function CheckoutPage() {
                   type='number'
                   placeholder='123'></input>
               </div>
-
-
             </div>
           </div>
-
         </div>
         <div className='col-lg-4' style={{ marginBottom: '100px' }}>
           <div className='card border-secondary mb-5'>
@@ -185,12 +190,13 @@ function CheckoutPage() {
             </div>
             <div className='card-body'>
               <h5 className='font-weight-medium mb-3'>Products</h5>
-              {data.map(product => {
+              {data.map((product) => {
                 return (
                   <div className='d-flex justify-content-between'>
                     <p>{product.title}</p>
                     <p>{product.price * product.quantity}</p>
-                  </div>)
+                  </div>
+                );
               })}
               <hr className='mt-0'></hr>
               <div className='d-flex justify-content-between mb-3 pt-1'>
@@ -252,14 +258,19 @@ function CheckoutPage() {
               </div>
             </div>
             <div className='card-footer border-secondary bg-transparent'>
-              <button className='btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3' onClick={() => submitorder(values, id, data)}>
+              <button
+                className='btn btn-lg btn-block btn-primary font-weight-bold my-3 py-3'
+                onClick={() => {
+                  submitorder(values, id, data);
+                  valNot();
+                }}>
                 Place Order
               </button>
             </div>
           </div>
         </div>
       </div>
-
+      <ToastContainer theme='dark' />
       {/* Checkout end */}
     </div>
   );
