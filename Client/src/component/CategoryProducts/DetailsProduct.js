@@ -6,7 +6,7 @@ import { addtoCart } from '../../store/cart-reducer';
 import {addreview} from '../../store/product-reducer'
 
 function DetailsProduct() {
-    const[quantity, setquantity]= useState(0)
+    const[quantity, setquantity]= useState(1)
   const [comment, setComment] =useState('')
   const [name, setName] =useState('')
   const [emailId, setEmailId] =useState('')

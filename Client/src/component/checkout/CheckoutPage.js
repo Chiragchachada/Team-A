@@ -1,21 +1,25 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 function CheckoutPage() {
+  const locations = useLocation()
 
-  const cart = useSelector((state) => {
-    console.log(state)
-    return state.cr.cart
-  })
+
+  
+  
   const auth = (state) => {
     return state.au.auth
   }
   const user = useSelector(auth)
   const id = user.id
+  const data = locations.state;
+  console.log("qqq", data);
+
 
   function total() {
     let total = 0
-    cart.map(product => {
+    data.map(product => {
       total += product.price * product.quantity
     })
     return total
@@ -219,7 +223,7 @@ function CheckoutPage() {
             </div>
             <div className='card-body'>
               <h5 className='font-weight-medium mb-3'>Products</h5>
-              {cart.map(product => {
+              {data.map(product => {
                 return (
                   <div className='d-flex justify-content-between'>
                     <p>{product.title}</p>

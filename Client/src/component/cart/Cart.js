@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { deleteFromCart, fetchCart, updatequantity } from '../../store/cart-reducer';
 import { addtoCart } from '../../store/cart-reducer';
 
@@ -42,11 +43,8 @@ function Cart() {
     return total
   }
 
-  const checkOut = (product, quantity) => {
-    console.log("in checkout")
-    navigate('/checkout')
-    // dispatch(checkout(product, quantity))
-
+  const checkOut = () => {
+    navigate("/Checkout", {state:cart});
 
   }
 
@@ -169,7 +167,7 @@ dispatch(updatequantity(id, quant))
                   <h5 className='font-weight-bold'>Total</h5>
                   <h5 className='font-weight-bold'>{total()}</h5>
                 </div>
-                <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut(cart, quantity)}>
+                <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut()}>
                   Proceed To Checkout
                 </button>
               </div>
