@@ -42,7 +42,6 @@ function CheckoutPage() {
   }
   const user = useSelector(auth)
   const id = user.id
-  const locations = useLocation
   const data = locations.state;
   console.log("qqq", data);
 
