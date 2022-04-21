@@ -1,7 +1,32 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { useSelector } from 'react-redux';
 
 function CheckoutPage() {
+  
+  const initialValues = {
+    firstname: "",
+    lastname: "",
+    email: "",
+    mobileNo: "",
+    Addressline1: "",
+    Addressline2: "",
+    city: "",
+    country: "",
+    state: "",
+    zipCode: "",
+  };
+
+  const [values, setValues] = useState(initialValues);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  console.log(values);
 
   const cart = useSelector((state) => {
     console.log(state)
@@ -34,6 +59,9 @@ function CheckoutPage() {
                 <label>First Name</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.firstname}
+                  name='firstname'
                   type='text'
                   placeholder='John'></input>
               </div>
@@ -41,6 +69,9 @@ function CheckoutPage() {
                 <label>Last Name</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.lastname}
+                  name='lastname'
                   type='text'
                   placeholder='Doe'></input>
               </div>
@@ -48,20 +79,29 @@ function CheckoutPage() {
                 <label>E-mail</label>
                 <input
                   className='form-control'
-                  type='text'
+                  onChange={handleInputChange}
+                  value={values.email}
+                  name='email'
+                  type='email'
                   placeholder='example@email.com'></input>
               </div>
               <div className='col-md-6 form-group'>
                 <label>Mobile No</label>
                 <input
                   className='form-control'
-                  type='text'
+                  onChange={handleInputChange}
+                  value={values.mobileNo}
+                  name='mobileNo'
+                  type='number'
                   placeholder='+123 456 789'></input>
               </div>
               <div className='col-md-6 form-group'>
                 <label>Address Line 1</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.Addressline1}
+                  name='Addressline1'
                   type='text'
                   placeholder='123 Street'></input>
               </div>
@@ -69,23 +109,33 @@ function CheckoutPage() {
                 <label>Address Line 2</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.Addressline2}
+                  name='Addressline2'
                   type='text'
                   placeholder='123 Street'></input>
               </div>
               <div className='col-md-6 form-group'>
                 <label>Country</label>
-                <select className='custom-select'>
-                  <option selected>United States</option>
-                  <option>Afghanistan</option>
-                  <option>Albania</option>
-                  <option>India</option>
-                  <option>Algeria</option>
+                <select className='custom-select'
+                 onChange={handleInputChange}
+                 name='country'
+                 value={values.country}>
+                  
+                  <option value='India' selected>India</option>
+                  <option value='USA'>USA</option>
+                  <option value='Germany'>Germany</option>
+                  <option value='Canada'>Canada</option>
+                  <option value='Algeria'>Algeria</option>
                 </select>
               </div>
               <div className='col-md-6 form-group'>
                 <label>City</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.city}
+                  name='city'
                   type='text'
                   placeholder='New York'></input>
               </div>
@@ -93,6 +143,9 @@ function CheckoutPage() {
                 <label>State</label>
                 <input
                   className='form-control'
+                  onChange={handleInputChange}
+                  value={values.state}
+                  name='state'
                   type='text'
                   placeholder='New York'></input>
               </div>
@@ -100,117 +153,17 @@ function CheckoutPage() {
                 <label>ZIP Code</label>
                 <input
                   className='form-control'
-                  type='text'
+                  onChange={handleInputChange}
+                  value={values.zipCode}
+                  name='zipCode'
+                  type='number'
                   placeholder='123'></input>
               </div>
-              <div className='col-md-12 form-group'>
-                <div className='custom-control custom-checkbox'>
-                  <input
-                    type='checkbox'
-                    className='custom-control-input'
-                    id='newaccount'></input>
-                  <label className='custom-control-label' for='newaccount'>
-                    Create an account
-                  </label>
-                </div>
-              </div>
-              <div className='col-md-12 form-group'>
-                <div className='custom-control custom-checkbox'>
-                  <input
-                    type='checkbox'
-                    className='custom-control-input'
-                    id='shipto'></input>
-                  <label
-                    className='custom-control-label'
-                    for='shipto'
-                    data-toggle='collapse'
-                    data-target='#shipping-address'>
-                    Ship to different address
-                  </label>
-                </div>
-              </div>
+             
+              
             </div>
           </div>
-          <div
-            className='collapse mb-5'
-            style={{ marginBottom: '100px' }}
-            id='shipping-address'>
-            <h4 className='font-weight-semi-bold mb-4'>Shipping Address</h4>
-            <div className='row'>
-              <div className='col-md-6 form-group'>
-                <label>First Name</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='John'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>Last Name</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='Doe'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>E-mail</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='example@email.com'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>Mobile No</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='+123 456 789'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>Address Line 1</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='123 Street'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>Address Line 2</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='123 Street'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>Country</label>
-                <select className='custom-select'>
-                  <option selected>United States</option>
-                  <option>Afghanistan</option>
-                  <option>Albania</option>
-                  <option>Algeria</option>
-                </select>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>City</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='New York'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>State</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='New York'></input>
-              </div>
-              <div className='col-md-6 form-group'>
-                <label>ZIP Code</label>
-                <input
-                  className='form-control'
-                  type='text'
-                  placeholder='123'></input>
-              </div>
-            </div>
-          </div>
+         
         </div>
         <div className='col-lg-4' style={{ marginBottom: '100px' }}>
           <div className='card border-secondary mb-5'>
