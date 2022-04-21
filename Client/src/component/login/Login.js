@@ -16,11 +16,11 @@ export default function Login() {
     return state.au.auth;
   });
    
-  if (user.auth ) {
-    navigate('/');
-  } else {
-    console.log('Display error message!');
-  }
+  // if (user.auth ) {
+  //   // navigate('/');
+  // } else {
+  //   console.log('Display error message!');
+  // }
 
   // console.log(user);
 
@@ -42,7 +42,7 @@ export default function Login() {
   });
 
   return (
-    <div className='d-flex main nodiv justify-content-evenly mb-28'>
+    <div className='d-flex main nodiv justify-content-evenly '>
       <div className='text-center   m-5-auto'>
         <div className='myleftctn ml-80'>
           <h2 className='myleftctn_header'>Log In</h2>

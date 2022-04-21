@@ -4,16 +4,19 @@ const checkoutSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"userSchema"},
     billingAddress: [{
-        firstName: String,
-        lastName: String,
-        addressLine1: String,
-        addressLine2: String,
+        firstname: String,
+        lastname: String,
+        email:String,
+        mobileNo:Number,
+        Addressline1: String,
+        Addressline2: String,
         city: String,
         state: String,
-        zip: Number,
-        country: String,
-        phone: Number
-    }]
+        zipCode: Number,
+        country: String
+        
+    }],
+    cart:[]
    
 
 });
