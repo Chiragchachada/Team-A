@@ -49,7 +49,7 @@ export default function CategoryProducts() {
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
                                     <a  onClick={()=>Hdeatails(product )} class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                    <a onClick={() => addToCart(product, userid)} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
+                                    {user.auth && <a onClick={() => addToCart(product, userid)} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>}
                                 </div>
                             </div>
                         </div>

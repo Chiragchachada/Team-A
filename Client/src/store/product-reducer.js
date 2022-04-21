@@ -63,7 +63,6 @@ export const fetchProducts = () => {
     console.log(id);
     return async dispatch=> {
       let response= await globalFetch(baseUrl +id, "DELETE")
-        console.log("delete res", response);
         let data = await response.json
         console.log("delete data", data);
 
@@ -75,7 +74,6 @@ export const fetchProducts = () => {
   }
 
 export const addreview = (id, productid) =>{
-  console.log("uu", id, "pprod", productid);
   return async dispatch=>{
     let response = await fetch(baseUrl + 'addreview/' + id, {
       method: 'POST',
@@ -84,7 +82,6 @@ export const addreview = (id, productid) =>{
       },
       body: JSON.stringify( productid)
     });
-    let data = await response.json();
     
    dispatch(fetchProducts())
    alert("Review Added Succesfully")

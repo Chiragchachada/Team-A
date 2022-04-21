@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux';
 import { addtoCart } from '../../store/cart-reducer';
 import {addreview} from '../../store/product-reducer'
 
 function DetailsProduct() {
-    const[quantity, setquantity]= useState(0)
+    const[quantity, setquantity]= useState(1)
   const [comment, setComment] =useState('')
   const [name, setName] =useState('')
   const [emailId, setEmailId] =useState('')
@@ -23,7 +23,6 @@ function DetailsProduct() {
     const data = locations.state;
     
     const products = data.product
-    console.log("kd", products)
     const addToCart = (products, userid,quantity) => {
         dispatch(addtoCart(products, userid, quantity));
     };
@@ -94,7 +93,7 @@ function DetailsProduct() {
                                 </div>
                             </div>
                             <div className='text-center mx-auto' >
-                            <button className="btn btn-primary px-3 " onClick={() => addToCart(products, userid,quantity)}><i className="fa fa-shopping-cart mr-1 "></i> {' '} Add To Cart</button>
+                            {user.auth &&<button className="btn btn-primary px-3 " onClick={() => addToCart(products, userid,quantity)}><i className="fa fa-shopping-cart mr-1 "></i> {' '} Add To Cart</button>}
                             </div>
                         </div>
                         <div className="d-flex pt-2">

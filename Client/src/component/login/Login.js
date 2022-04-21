@@ -15,7 +15,6 @@ export default function Login() {
     console.log(state);
     return state.au.auth;
   });
-   console.log("user", user);
    
   if (user.auth ) {
     navigate('/');

@@ -17,7 +17,7 @@ exports.createCheckout = async (req, res, next) => {
 }
 
 exports.getCheckout = async (req, res, next) => {
-    console.log('creating.. ', req.body);
+    console.log('Fetch.. ');
     const product = await checkoutModel.find();
 
     res.status(200).json({

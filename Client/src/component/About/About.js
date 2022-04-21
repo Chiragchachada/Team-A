@@ -42,7 +42,7 @@ export default function Contact() {
 
                             </div>
                             <div className="info">
-                                <h6 className="text-white">Back-End Developer</h6>
+                                <h6 className="text-white">FUll-Stack Developer</h6>
 
                             </div>
 
