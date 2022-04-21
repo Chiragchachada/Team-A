@@ -39,12 +39,16 @@ exports.deleteItem = asyncHandler(async (req, res, next) => {
 
 exports.updateCart = async (req, res, next) => {
 
-    console.log('userid.. ', req.params.productid);
+    console.log('userid.. ', req.params.productid, req.body);
 
-    const updatedProduct = await Product.findByIdAndUpdate(req.params.productid, req.body)
 
+
+
+    const updatedProduct = await cartModel.findByIdAndUpdate({_id:req.params.productid}, {quantity:req.body.quant})
+    console.log("ff", updatedProduct);
     res.status(204).json({
-        success: true
+        success: true,
+        data:updatedProduct
     })
 
 }

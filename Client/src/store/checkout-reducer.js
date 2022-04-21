@@ -19,16 +19,19 @@ const checkoutReducer = createSlice({
   export const {FETCH_DATA, ADD_DATA} = checkoutReducer.actions
   export default checkoutReducer.reducer
 
-  // export const addfilterdata=(items)=>{
-  //   return async(dispatch) =>{
-  //     dispatch(ADD_DATA(items))
+  
+
+  // export const addcheckout = (productid) =>{
+  //   return async dispatch=>{
+  //     let response = await fetch(baseUrl + 'createorder', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-type': 'application/json'
+  //       },
+  //       body: JSON.stringify( productid)
+  //     });
+      
+  //    dispatch(fetchProducts())
+  //    alert("Review Added Succesfully")
   //   }
   // }
-
-  // export const fetchfilterdata = (items) => {
-  //   return async(dispatch) =>{
-  //       dispatch(FETCH_DATA(items));
-  //   }
-    
-  //   }
-  

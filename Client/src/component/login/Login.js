@@ -17,17 +17,9 @@ export default function Login() {
     console.log(state);
     return state.au.auth;
   });
-  console.log('user', user);
-
-  const valNot = () => {
-    toast.success('Login successfull', {
-      position: 'top-center',
-      autoClose: 1000,
-    });
-  };
-
-  if (user.auth) {
-    setcondition(!condition);
+   
+  if (user.auth ) {
+    // navigate('/');
   } else {
     console.log('Display error message!');
   }
@@ -49,7 +41,7 @@ export default function Login() {
     onSubmit: async (values) => {
       dispatch(login({ email: values.email, password: values.Password }));
       if (condition === true) {
-        valNot();
+        // valNot();
         setTimeout(() => {
           // navigate('/');
         }, 2000);
