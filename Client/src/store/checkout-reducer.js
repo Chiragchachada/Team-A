@@ -33,8 +33,7 @@ const checkoutReducer = createSlice({
         },
         body: JSON.stringify({billingAddress, userid ,cart})
       });
-      
-     alert("Order Placed")
+    
     }
     
   }
