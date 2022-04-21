@@ -1,15 +1,15 @@
 import './Logincss.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 import { useFormik } from 'formik';
 import { login } from '../../store/auth.reducer';
-import { toast, ToastContainer } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 export default function Login() {
-  let navigate = useNavigate();
+ 
   const [condition, setcondition] = useState(false);
 
   const dispatch = useDispatch();
@@ -17,14 +17,14 @@ export default function Login() {
     console.log(state);
     return state.au.auth;
   });
+
+  if (user.auth) {
    
-  if (user.auth ) {
-    // navigate('/');
   } else {
     console.log('Display error message!');
   }
 
-  // console.log(user);
+
 
   const formik = useFormik({
     initialValues: {

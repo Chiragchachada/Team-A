@@ -1,6 +1,6 @@
 import React from 'react';
 import './Slider.css';
-// import '../../css/Style.css'
+
 import carousel1 from '../../img/carousel-1.jpg';
 import carousel2 from '../../img/carousel-2.jpg';
 import { Link } from 'react-router-dom';
@@ -44,7 +44,6 @@ function Slider() {
             </div>
           </div>
         </div>
-       
       </div>
     </>
   );

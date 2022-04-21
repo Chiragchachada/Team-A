@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { deleteFromCart, fetchCart, updatequantity } from '../../store/cart-reducer';
+import {
+  deleteFromCart,
+  fetchCart,
+  updatequantity,
+} from '../../store/cart-reducer';
 
 // import '../../css/Style.css'
 
 function Cart() {
-  const [quantity, setquantity] = useState(0)
-  const [fetch, setFetch] = useState(false)
-  const [amount, setamount] = useState()
-
+  const [quantity, setquantity] = useState(0);
+  const [fetch, setFetch] = useState(false);
 
   const dispatch = useDispatch();
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const cart = useSelector((state) => {
-    console.log(state)
-    return state.cr.cart
-  })
+    console.log(state);
+    return state.cr.cart;
+  });
   const auth = (state) => {
-    return state.au.auth
-  }
-  const user = useSelector(auth)
-  const id = user.id
-
+    return state.au.auth;
+  };
+  const user = useSelector(auth);
+  const id = user.id;
 
   useEffect(() => {
     if (user.auth) {
@@ -30,55 +31,36 @@ function Cart() {
     }
   }, [fetch]);
 
-
   function deleteitem(id) {
-    dispatch(deleteFromCart(id))
-    setFetch(!fetch)
-
+    dispatch(deleteFromCart(id));
+    setFetch(!fetch);
   }
 
-
   function total(e) {
-    let total = 0
+    let total = 0;
 
-    cart.map(product => {
-      total += (product.price * product.quantity)
-      
-    })
-    if(total !== 0){
-    return total + e}
-
+    cart.map((product) => {
+      total += product.price * product.quantity;
+    });
+    if (total !== 0) {
+      return total + e;
+    }
   }
 
   const checkOut = () => {
-    navigate("/Checkout", { state: cart });
-
-  }
-
-
-
+    navigate('/Checkout', { state: cart });
+  };
 
   const incNum = (id, quant) => {
-    setquantity(quantity + 1)
-    dispatch(updatequantity(id, quant))
-    setFetch(!fetch)
-  }
+    setquantity(quantity + 1);
+    dispatch(updatequantity(id, quant));
+    setFetch(!fetch);
+  };
   const decNum = (id, quant) => {
-    setquantity(quantity - 1)
-    dispatch(updatequantity(id, quant))
-    setFetch(!fetch)
-
-
-  }
-
-
-
-
-
-
-
-
-
+    setquantity(quantity - 1);
+    dispatch(updatequantity(id, quant));
+    setFetch(!fetch);
+  };
 
   return (
     <>
@@ -104,8 +86,8 @@ function Cart() {
                           src={product.image}
                           alt=''
                           style={{ width: '50px' }}
-                        />{product.title}
-
+                        />
+                        {product.title}
                       </td>
                       <td className='align-middle'>{product.price}</td>
                       <td className='align-middle'>
@@ -113,32 +95,47 @@ function Cart() {
                           className='input-group quantity mx-auto'
                           style={{ width: '100px' }}>
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-minus' onClick={() => decNum(product._id, { quant: product.quantity - 1 })} >
+                            <button
+                              className='btn btn-sm btn-primary btn-minus'
+                              onClick={() =>
+                                decNum(product._id, {
+                                  quant: product.quantity - 1,
+                                })
+                              }>
                               <i className='fa fa-minus'></i>
                             </button>
                           </div>
                           <input
                             type='text'
-                            min="0"
+                            min='0'
                             className='form-control form-control-sm bg-secondary text-center'
                             value={product.quantity}
                           />
                           <div className='input-group-btn'>
-                            <button className='btn btn-sm btn-primary btn-plus' onClick={() => incNum(product._id, { quant: product.quantity + 1 })} >
+                            <button
+                              className='btn btn-sm btn-primary btn-plus'
+                              onClick={() =>
+                                incNum(product._id, {
+                                  quant: product.quantity + 1,
+                                })
+                              }>
                               <i className='fa fa-plus'></i>
                             </button>
                           </div>
                         </div>
                       </td>
-                      <td className='align-middle'>{product.price * product.quantity}</td>
                       <td className='align-middle'>
-                        <button className='btn btn-sm btn-primary' onClick={() => deleteitem(product._id)}>
+                        {product.price * product.quantity}
+                      </td>
+                      <td className='align-middle'>
+                        <button
+                          className='btn btn-sm btn-primary'
+                          onClick={() => deleteitem(product._id)}>
                           <i className='fa fa-times'></i>
                         </button>
                       </td>
                     </tr>
-
-                  )
+                  );
                 })}
               </tbody>
             </table>
@@ -167,7 +164,7 @@ function Cart() {
                 </div>
                 <div className='d-flex justify-content-between'>
                   <h6 className='font-weight-medium'>Shipping</h6>
-                  <h6 className='font-weight-medium' >20 Rs</h6>
+                  <h6 className='font-weight-medium'>20 Rs</h6>
                 </div>
               </div>
               <div className='card-footer border-secondary bg-transparent'>
@@ -175,7 +172,9 @@ function Cart() {
                   <h5 className='font-weight-bold'>Total</h5>
                   <h5 className='font-weight-bold'>{total(20)}</h5>
                 </div>
-                <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut()}>
+                <button
+                  className='btn btn-block btn-primary my-3 py-3'
+                  onClick={() => checkOut()}>
                   Proceed To Checkout
                 </button>
               </div>

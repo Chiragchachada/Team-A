@@ -5,16 +5,15 @@ import { fetchProducts } from '../../store/product-reducer';
 import { Link } from 'react-router-dom';
 export default function Homescreen() {
   const [name, setName] = useState('');
-  const [filterprice, setFilterprice] = useState(false);
+
   const [filterData, setFilterdata] = useState(true);
 
   const ShopData = [];
 
   const [foundUsers, setFoundUsers] = useState(ShopData);
-  // ShopData.push(shop.)
+
   const shop = useSelector((state) => {
     return state.pr.products;
-  
   });
 
   for (let i = 0; i < shop.length; i++) {
@@ -24,11 +23,7 @@ export default function Homescreen() {
     }
   }
 
-
   const dispatch = useDispatch();
-
-  
-
 
   const filter = (e) => {
     const keyword = e.target.value;
@@ -36,32 +31,19 @@ export default function Homescreen() {
     if (keyword !== '') {
       const data = ShopData.filter((user) => {
         return user.title.toLowerCase().includes(keyword.toLowerCase());
-      
       });
       setFoundUsers(data);
-      setFilterdata(!filterData)
-      
+      setFilterdata(!filterData);
     } else {
-    
       setFoundUsers(ShopData);
-     
     }
     setName(keyword);
   };
-
-
-
-
-
-
-
-
 
   useEffect(() => {
     console.log('Init ... View Products .... ');
     dispatch(fetchProducts());
   }, [dispatch]);
-
 
   return (
     <div>
@@ -82,46 +64,42 @@ export default function Homescreen() {
         </div>
       </div>
 
-
-        <div className='row'>
-          <form className='mb-5 '>
-            <div className='input-group col-5 mx-auto ' >
-              <input
-                type='text'
-                onChange={filter}
-                value={name}
-                className='form-control mx-auto '
-                placeholder='Search by title'></input>
-              <div className='input-group-append'>
-                <span className='input-group-text bg-transparent text-primary'>
-                  <i className='fa fa-search'></i>
-                </span>
-              </div>
+      <div className='row'>
+        <form className='mb-5 '>
+          <div className='input-group col-5 mx-auto '>
+            <input
+              type='text'
+              onChange={filter}
+              value={name}
+              className='form-control mx-auto '
+              placeholder='Search by title'></input>
+            <div className='input-group-append'>
+              <span className='input-group-text bg-transparent text-primary'>
+                <i className='fa fa-search'></i>
+              </span>
             </div>
-          </form>
-          { filterData?  ShopData.map((products) => {
-            return (
-              <div  className=' col-3 container ms-5 me-5' >
-                <div>
-                <Product product={products}  />
-                 
-           
+          </div>
+        </form>
+        {filterData
+          ? ShopData.map((products) => {
+              return (
+                <div className=' col-3 container ms-5 me-5'>
+                  <div>
+                    <Product product={products} />
+                  </div>
                 </div>
-              </div>
-            );
-          }) : foundUsers.map((products) => {
-            return (
-              <div  className=' col-3 container ms-5 me-5' >
-                <div>
-                <Product product={products}  />
-                 
-           
+              );
+            })
+          : foundUsers.map((products) => {
+              return (
+                <div className=' col-3 container ms-5 me-5'>
+                  <div>
+                    <Product product={products} />
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      
+              );
+            })}
+      </div>
     </div>
   );
 }

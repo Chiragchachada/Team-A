@@ -19,10 +19,10 @@ import About from './component/About/About'
 
 
 function App() {
-  const user = useSelector((state) => {
-    console.log(state);
-    return state.au.auth;
-  });
+  // const user = useSelector((state) => {
+  //   console.log(state);
+  //   return state.au.auth;
+  // });
 
   return (
     <div className='App'>

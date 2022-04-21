@@ -16,7 +16,7 @@ const productReducer = createSlice({
       return {products: newProducts};
     },
     DELETE_PRODUCT(state,action){
-      let newProducts = state.products.filter(e => e._id != action.payload.id)
+      let newProducts = state.products.filter(e => e._id !== action.payload.id)
       return {products: newProducts};
     }
   }

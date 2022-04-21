@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { addtoCart, checkout } from '../../store/cart-reducer';
+import { addtoCart } from '../../store/cart-reducer';
 import { toast, ToastContainer } from 'react-toastify';
-
-
-// import '../../css/Style.css'
 
 export default function Product({ product }) {
   const [quantity, setquantity] = useState();

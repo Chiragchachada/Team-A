@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import globalFetch from '../Addons/globalfetch';
+
 
 
 const cartReducer = createSlice({

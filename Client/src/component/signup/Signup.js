@@ -7,32 +7,19 @@ import { useFormik } from 'formik';
 import { singup } from '../../store/auth.reducer';
 
 function Signup() {
-  //   const [email, setEmail] = useState('');
-  //   const [pass, setPass] = useState('');
-  //   const [userName, setUserName] = useState('');
-  //   const [confirmPass, setConfirmPass] = useState('');
-  //   const [role, setRole] = useState('');
   const user = useSelector((state) => {
     console.log(state);
     return state.au.auth;
   });
   let navigate = useNavigate();
   const dispatch = useDispatch();
-  if (user.auth ) {
+  if (user.auth) {
     setTimeout(() => {
       navigate('/');
     }, 2000);
   } else {
     console.log('Display error message!');
   }
-
-  //   const createAccount = (e) => {
-  //     e.preventDefault();
-  //     dispatch(
-  //       singup({ username: userName, email: email, password: pass, role: role })
-  //     );
-  //     navigate('/products');
-  //   };
 
   const formik = useFormik({
     initialValues: {
@@ -101,8 +88,6 @@ function Signup() {
               id='email'
               name='email'
               type='email'
-              //   value={email}
-              //   onChange={(e) => setEmail(e.target.value)}
               className='myinput'
               placeholder='email'
               onChange={formik.handleChange}
