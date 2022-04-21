@@ -29,7 +29,7 @@ function CheckoutPage() {
 
   console.log(values);
 
-
+const locations = useLocation()
   
   
   const auth = (state) => {
