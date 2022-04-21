@@ -9,6 +9,9 @@ function TopNavbar() {
   // const [foundUsers, setFoundUsers] = useState(ShopData);
 
   // const ShopData = [];
+  const user = useSelector((state) => {
+    return state.au.auth;
+  });
 
   const cart = useSelector((state) => {
     console.log(state)
@@ -64,7 +67,7 @@ function TopNavbar() {
         <div class='col-lg-3 col-6 text-right'>
           <Link to='/Cart' class='btn border'>
             <i class='fa fa-shopping-cart' aria-hidden='true'></i>
-            <span class='badge text-dark'>{cart.length}</span>
+           {user.auth && <span class='badge text-dark'>{cart.length}</span>}
           </Link>
         </div>
       </div>
