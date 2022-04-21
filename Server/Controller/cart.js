@@ -46,7 +46,6 @@ exports.updateCart = async (req, res, next) => {
 
     const updatedProduct = await cartModel.findByIdAndUpdate({_id:req.params.productid}, {quantity:req.body.quant})
     console.log("ff", updatedProduct);
-
     res.status(204).json({
         success: true,
         data:updatedProduct
