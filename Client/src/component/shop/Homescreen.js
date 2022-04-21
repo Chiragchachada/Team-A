@@ -42,8 +42,8 @@ export default function Homescreen() {
   const price4 = priceFilter.filter((x) => x >= 30000 && x <= 90000);
 
 const productfilter = ShopData.filter((item)=> item.price  >= 0 && item.price <= 300)
-console.log(productfilter);
-
+const uniqueNames = Array.from(new Set(productfilter));
+console.log(uniqueNames);
 
   const filter = (e) => {
     const keyword = e.target.value;
@@ -216,7 +216,7 @@ console.log(productfilter);
                   {
                     filterprice ? (<div>
                       {
-                        productfilter.map((elem, i)=> (
+                        uniqueNames.map((elem, i)=> (
                           <Product product={elem} key={i} />
                         ))
                       }
