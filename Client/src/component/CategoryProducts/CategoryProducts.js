@@ -2,6 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { addtoCart } from '../../store/cart-reducer';
+import { toast, ToastContainer } from 'react-toastify';
+
 
 export default function CategoryProducts() {
     const navigates = useNavigate();
@@ -22,6 +24,12 @@ export default function CategoryProducts() {
     
       }
 
+      const valNot = () => {
+        toast.success('Added successfully', {
+          position: 'top-center',
+          autoClose: 1000,
+        });
+      };
 
     if (category) {
         console.log("category", category);
@@ -49,7 +57,8 @@ export default function CategoryProducts() {
                                 </div>
                                 <div class="card-footer d-flex justify-content-between bg-light border">
                                     <a  onClick={()=>Hdeatails(product )} class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                    {user.auth && <a onClick={() => addToCart(product, userid)} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>}
+                                    {user.auth && <a onClick={() => {addToCart(product, userid)
+                                    valNot()}} class="btn btn-sm text-dark p-0"><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>}
                                 </div>
                             </div>
                         </div>
@@ -58,7 +67,8 @@ export default function CategoryProducts() {
                 })}
 
             </div>
-        </div> </>)
+        </div>
+        <ToastContainer theme='dark' /> </>)
     } else {
         return (<><h1>Please Select Category</h1>
             <div>Move to Category</div></>)

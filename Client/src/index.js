@@ -15,6 +15,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../src/css/Style.min.css'
 import filterReducer from './store/filter.reducer';
 import checkoutReducer from './store/checkout-reducer';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 

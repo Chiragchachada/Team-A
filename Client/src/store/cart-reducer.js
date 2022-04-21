@@ -80,7 +80,7 @@ export const addtoCart = (product, userid, quantity) => {
     let data = await response.json();
 
     dispatch(ADD_TO_CART(product));
-    alert("Product Added to Cart")
+    
 
 
   }

@@ -19,7 +19,9 @@ function Signup() {
   let navigate = useNavigate();
   const dispatch = useDispatch();
   if (user.auth ) {
-    navigate('/');
+    setTimeout(() => {
+      navigate('/');
+    }, 2000);
   } else {
     console.log('Display error message!');
   }
