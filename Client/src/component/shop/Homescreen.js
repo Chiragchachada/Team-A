@@ -9,7 +9,7 @@ export default function Homescreen() {
   const [filterData, setFilterdata] = useState(false);
 
   const ShopData = [];
-  console.log(ShopData);
+
   const [foundUsers, setFoundUsers] = useState(ShopData);
   // ShopData.push(shop.)
   const shop = useSelector((state) => {
