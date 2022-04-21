@@ -12,9 +12,8 @@ exports.signup = asyncHandler(async (req, res, next) => {
         console.log(token)
         res.status(200).json({
             auth: true,
-            token: token,
-            user: user.username,
-            userId: user._id
+            token: token
+        
         })
 
     } else {
@@ -51,9 +50,8 @@ exports.adminlogin = async(req,res,next)=>{
   if(user.role === "admin"){
     res.json({
         auth:true,
-        token:token,
-        user:user.username,
-        userId:user._id
+        token:token
+        
     })
   }else{
       res.status(403).json({
