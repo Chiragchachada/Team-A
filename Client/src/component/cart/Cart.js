@@ -6,9 +6,10 @@ import { addtoCart } from '../../store/cart-reducer';
 // import '../../css/Style.css'
 
 function Cart() {
-  const[quantity, setquantity]= useState(0)
+  const [quantity, setquantity] = useState(0)
   const [fetch, setFetch] = useState(false)
   const dispatch = useDispatch();
+  let navigate = useNavigate()
   const cart = useSelector((state) => {
     console.log(state)
     return state.cr.cart
@@ -24,15 +25,15 @@ function Cart() {
     if(user.auth){
     dispatch(fetchCart({ id: id }));}
   }, [fetch]);
-  
-  
+
+
   function deleteitem(id) {
     dispatch(deleteFromCart(id))
     setFetch(!fetch)
 
   }
 
-  
+
   function total() {
     let total = 0
     cart.map(product => {
@@ -40,7 +41,15 @@ function Cart() {
     })
     return total
   }
-  
+
+  const checkOut = (product, quantity) => {
+    console.log("in checkout")
+    navigate('/checkout')
+    // dispatch(checkout(product, quantity))
+
+
+  }
+
 
 
   
@@ -160,7 +169,7 @@ dispatch(updatequantity(id, quant))
                   <h5 className='font-weight-bold'>Total</h5>
                   <h5 className='font-weight-bold'>{total()}</h5>
                 </div>
-                <button className='btn btn-block btn-primary my-3 py-3'>
+                <button className='btn btn-block btn-primary my-3 py-3' onClick={() => checkOut(cart, quantity)}>
                   Proceed To Checkout
                 </button>
               </div>
