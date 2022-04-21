@@ -14,6 +14,7 @@ import authReducer from './store/auth.reducer';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../src/css/Style.min.css'
 import filterReducer from './store/filter.reducer';
+import checkoutReducer from './store/checkout-reducer';
 
 
 
@@ -40,7 +41,7 @@ const composedEnhancer = composeWithDevTools(
 
   // store with reducer
 // Create a Store - state container
-const store = createStore(combineReducers({pr:productsReducer,cr:cartReducer,au:authReducer,fd:filterReducer}), composedEnhancer)
+const store = createStore(combineReducers({pr:productsReducer,cr:cartReducer,au:authReducer,fd:filterReducer,rm:checkoutReducer}), composedEnhancer)
 // const store = createStore(productsReducer, composedEnhancer)
 
 ReactDOM.render(
