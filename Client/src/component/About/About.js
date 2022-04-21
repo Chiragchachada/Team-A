@@ -26,7 +26,7 @@ export default function Contact() {
                                 <h6 className="text-white">Full-Stack Developer</h6>
 
                             </div>
-                            <button type="button" className="btn btn-secondary btn-lg btn-block">View Profile</button>
+                            <a   href="https://github.com/i-am-shubham-gour" type="button" className="btn btn-secondary btn-lg btn-block">View Profile</a>
 
                         </div>
                         
@@ -46,7 +46,7 @@ export default function Contact() {
 
                             </div>
 
-                            <button   type="button" className="btn btn-secondary btn-lg btn-block">View Profile</button>
+                            <a href="https://github.com/Chiragchachada"  type="button" className="btn btn-secondary btn-lg btn-block">View Profile</a>
                         </div>
 
                     </div>
@@ -64,7 +64,7 @@ export default function Contact() {
 
                             </div>
 
-                            <button type="button" className="btn btn-secondary btn-lg btn-block">View Profile</button>
+                            <a href="https://github.com/ranaofficial1" type="button" className="btn btn-secondary btn-lg btn-block">View Profile</a>
                         </div>
 
                     </div>
@@ -81,7 +81,7 @@ export default function Contact() {
                                 <h6 className="text-white">Full-Stack Developer</h6>
 
                             </div>
-                            <button type="button" className="btn btn-secondary btn-lg btn-block">View Profile</button>
+                            <a  href="https://github.com/Anbumani890" type="button" className="btn btn-secondary btn-lg btn-block">View Profile</a>
 
                         </div>
 
@@ -100,7 +100,7 @@ export default function Contact() {
 
                             </div>
 
-                            <button type="button" className="btn btn-secondary btn-lg btn-block">View Profile</button>
+                            <a   href="https://github.com/rupesh911" type="button" className="btn btn-secondary btn-lg btn-block">View Profile</a>
                         </div>
 
                     </div>
