@@ -84,6 +84,6 @@ export const addreview = (id, productid) =>{
     });
     
    dispatch(fetchProducts())
-   alert("Review Added Succesfully")
+
   }
 }
