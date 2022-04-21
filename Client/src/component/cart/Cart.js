@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { deleteFromCart, fetchCart, updatequantity } from '../../store/cart-reducer';
-import { addtoCart } from '../../store/cart-reducer';
 
 // import '../../css/Style.css'
 
 function Cart() {
   const [quantity, setquantity] = useState(0)
   const [fetch, setFetch] = useState(false)
+  const [amount, setamount] = useState()
+
+
   const dispatch = useDispatch();
   let navigate = useNavigate()
   const cart = useSelector((state) => {
@@ -38,10 +40,14 @@ function Cart() {
 
   function total(e) {
     let total = 0
+
     cart.map(product => {
-      total += (product.price * product.quantity) + e
+      total += (product.price * product.quantity)
+      
     })
-    return total
+    if(total !== 0){
+    return total + e}
+
   }
 
   const checkOut = () => {
@@ -157,11 +163,11 @@ function Cart() {
               <div className='card-body'>
                 <div className='d-flex justify-content-between mb-3 pt-1'>
                   <h6 className='font-weight-medium'>Subtotal</h6>
-                  <h6 className='font-weight-medium'>{total(0)}</h6>
+                  <h6 className='font-weight-medium'>{total(0)} Rs</h6>
                 </div>
                 <div className='d-flex justify-content-between'>
                   <h6 className='font-weight-medium'>Shipping</h6>
-                  <h6 className='font-weight-medium' >$20</h6>
+                  <h6 className='font-weight-medium' >20 Rs</h6>
                 </div>
               </div>
               <div className='card-footer border-secondary bg-transparent'>

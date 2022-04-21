@@ -49,9 +49,9 @@ function CheckoutPage() {
   function total(e) {
     let total = 0
     data.map(product => {
-      total += (product.price * product.quantity) + e
+      total += (product.price * product.quantity) 
     })
-    return total
+    return total+e
   }
 
   function submitorder(values, id, data) {
