@@ -53,6 +53,13 @@ function DetailsProduct() {
         });
       };
 
+      const valNot1 = () => {
+        toast.success('Review Added', {
+          position: 'top-center',
+          autoClose: 1000,
+        });
+      };
+
     if (data) {
         return (
             <>
@@ -230,7 +237,9 @@ function DetailsProduct() {
                                                onChange={(e)=>setEmailId(e.target.value)}id="email"></input>
                                             </div>
                                             <div className="form-group">
-                                                <button  value="Leave Your Review"  onClick={()=>Addreview(data.category,{productid:products._id, reviews:{name:name, comment:comment, emailid:emailId}})} className="btn btn-primary px-3">Leave Your Review</button>
+                                                <button  value="Leave Your Review"  onClick={()=>{Addreview(data.category,{productid:products._id, reviews:{name:name, comment:comment, emailid:emailId}})
+                                                 valNot1()}}
+                                                  className="btn btn-primary px-3">Leave Your Review</button>
                                             </div>
                                         
                                     </div>
